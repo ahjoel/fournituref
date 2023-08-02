@@ -26,6 +26,8 @@
             ],
             "styles": [
               "src/styles.css",
+              "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
+              "src/assets/css/sb-admin-2.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/vendor/aos/aos.css",
               "src/assets/vendor/bootstrap/css/bootstrap.min.css",
@@ -38,6 +40,7 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
+              "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js",
               "node_modules/datatables.net/js/jquery.dataTables.min.js",
               "src/assets/vendor/aos/aos.js",
               "src/assets/vendor/bootstrap/js/bootstrap.bundle.min.js",

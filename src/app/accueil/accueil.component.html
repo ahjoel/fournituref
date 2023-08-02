@@ -1,5 +1,4 @@
 <body>
-
     <!-- ======= Header ======= -->
     <header id="header" [ngClass]="{'header-scrolled': scrolled}"  class="fixed-top ">
       <div class="container d-flex align-items-center">
@@ -12,7 +11,7 @@
             <li><a class="nav-link scrollto" href="#about">A Propos</a></li>
             <li><a class="nav-link scrollto" href="#services">Fonctionnalités</a></li>
             <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-            <li><a class="getstarted scrollto" href="#about">Démarrez</a></li>
+            <li><a class="getstarted scrollto" routerLink="/dashboard">Démarrez</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -29,7 +28,7 @@
             <h1>Gérer au mieux vos Fournitures de Bureaux</h1>
             <h2>Spécialement conçu pour fluidifier les process de gestion de stock des fournitures de bureau en entreprises</h2>
             <div class="d-flex justify-content-center justify-content-lg-start">
-              <a href="#about" class="btn-get-started scrollto">Démarrez</a>
+              <a routerLink="/dashboard" class="btn-get-started scrollto">Démarrez</a>
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -313,7 +312,7 @@
           &copy; Copyright <strong><span>STOCKFB</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-          Designed by <a href="https://www.linkedin.com/in/jo%C3%ABl-aholou-1171a5174/">KAJ</a>
+          Designed by <a target="_blank" href="https://www.linkedin.com/in/jo%C3%ABl-aholou-1171a5174/">KAJ</a>
         </div>
       </div>
     </footer><!-- End Footer -->
