@@ -26,29 +26,17 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
+              "src/assets/vendor/datatables/dataTables.bootstrap4.min.css",
               "src/assets/css/sb-admin-2.min.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/vendor/aos/aos.css",
-              "src/assets/vendor/bootstrap/css/bootstrap.min.css",
-              "src/assets/vendor/bootstrap-icons/bootstrap-icons.css",
-              "src/assets/vendor/boxicons/css/boxicons.min.css",
-              "src/assets/vendor/glightbox/css/glightbox.min.css",
-              "src/assets/vendor/remixicon/remixicon.css",
-              "src/assets/vendor/swiper/swiper-bundle.min.css",
-              "src/assets/css/style.css"
+              "src/assets/css/all.min.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.js",
-              "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js",
-              "node_modules/datatables.net/js/jquery.dataTables.min.js",
-              "src/assets/vendor/aos/aos.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/vendor/jquery/jquery.min.js",
               "src/assets/vendor/bootstrap/js/bootstrap.bundle.min.js",
-              "src/assets/vendor/glightbox/js/glightbox.min.js",
-              "src/assets/vendor/isotope-layout/isotope.pkgd.min.js",
-              "src/assets/vendor/swiper/swiper-bundle.min.js",
-              "src/assets/vendor/waypoints/noframework.waypoints.js",
-              "src/assets/js/main.js"
+              "src/assets/js/sb-admin-2.min.js",
+              "src/assets/vendor/datatables/jquery.dataTables.min.js",
+              "src/assets/vendor/datatables/dataTables.bootstrap4.min.js"
             ]
           },
           "configurations": {
