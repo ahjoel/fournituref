@@ -25,15 +25,18 @@
             </li>
             
             <!-- Nav Item - Tables -->
-            <li class="nav-item" routerLinkActive="active" [class.active]="router.isActive('/fournitures', true)">
-                <a class="nav-link" routerLink="/fournitures">
+            <li class="nav-item" routerLinkActive="active" [class.active]="router.isActive('/employe', true)"
+            [class.active]="router.isActive('/employe/add_employe', true)" 
+            [class.active]="router.isActive('/employe/edit_employe', true)">
+                <a class="nav-link" routerLink="/employe">
                     <i class="fas fa-box"></i>
                     <span>Employé</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item" routerLinkActive="active" [class.active]="router.isActive('categorie', true)"
-            [class.active]="router.isActive('/categorie/add_categorie', true)">
+            <li class="nav-item" routerLinkActive="active" [class.active]="router.isActive('/categorie', true)"
+            [class.active]="router.isActive('/categorie/add_categorie', true)" 
+            [class.active]="router.isActive('/categorie/edit_categorie', true)">
                 <a class="nav-link" routerLink="/categorie">
                     <i class="fas fa-box"></i>
                     <span>Catégorie</span></a>

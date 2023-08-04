@@ -18,31 +18,32 @@
 <!-- Basic Card Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Enregistrement de Categorie</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Modification de Categorie - {{currentCategorie.codeCat}}  {{currentCategorie.nomCat}} </h6>
     </div>
     <div class="card-body">
         <form>
             <div class="form-row">
+                <input readonly type="hidden" [(ngModel)]="currentCategorie.id" name="id" class="form-control">
                 <div class="form-group col-md-3">
                     <label for="inputEmail4">Code Categorie</label>
-                    <input type="text" class="form-control" name="codeCat" required [(ngModel)]="newCategorie.codeCat"
+                    <input type="text" class="form-control" name="codeCat" required [(ngModel)]="currentCategorie.codeCat"
                         id="inputEmail4" placeholder="Code Categorie">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="inputPassword6">Nom Categorie</label>
-                    <input type="text" class="form-control" name="nomCat" required [(ngModel)]="newCategorie.nomCat"
+                    <input type="text" class="form-control" name="nomCat" required [(ngModel)]="currentCategorie.nomCat"
                         id="inputPassword6" placeholder="Nom Categorie">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword5">Description Categorie</label>
-                    <input type="text" class="form-control" name="descriptionCat" required [(ngModel)]="newCategorie.descriptionCat"
+                    <input type="text" class="form-control" name="descriptionCat" required [(ngModel)]="currentCategorie.descriptionCat"
                         id="inputPassword5" placeholder="Description Categorie">
                 </div>
             </div>
 
             <div class="col text-right">
                 <button type="reset" class="btn btn-warning">Annuler</button>
-                <button type="submit" (click)="addCategorie()" style="margin-left: 5px;" class="btn btn-primary">Enregistrer</button>
+                <button type="submit" (click)="updateCategorie()" style="margin-left: 5px;" class="btn btn-primary">Modifier</button>
             </div>
         </form>
     </div>

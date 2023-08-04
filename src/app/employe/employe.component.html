@@ -10,16 +10,16 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Catégorie Fourniture</h1>
+    <h1 class="h3 mb-0 text-gray-800">Employé</h1>
 
-    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" routerLink="add_categorie">
+    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" routerLink="add_employe">
         <i class="fas fa-plus fa-sm text-white-50"></i> Ajouter</a>
 </div>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Liste Catégories</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Liste Employé</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive table-wrapper">
@@ -29,22 +29,24 @@
                         <th>#</th>
                         <th>Code</th>
                         <th>Nom</th>
-                        <th>Description</th>
+                        <th>Prénom</th>
+                        <th>Service</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let categorie of categories; let i = index">
+                    <tr *ngFor="let employe of employes; let i = index">
                         <td>{{ i + 1}}</td>
-                        <td>{{categorie.codeCat}}</td>
-                        <td>{{categorie.nomCat}}</td>
-                        <td>{{categorie.descriptionCat}}</td>
+                        <td>{{employe.codeEmp}}</td>
+                        <td>{{employe.nomEmp}}</td>
+                        <td>{{employe.prenomEmp}}</td>
+                        <td>{{employe.serviceEmp}}</td>
                         <td>
-                            <a [routerLink]="['/categorie/edit_categorie', categorie.id]"
+                            <a [routerLink]="['/employe/edit_employe', employe.id]"
                                 class="btn btn-info btn-circle btn-sm">
                                 <i class="fas fa-pen"></i>
                             </a>
-                            <a (click)="supprimerCategorie(categorie)" class="btn btn-danger btn-circle btn-sm" style="margin-left: 5px;">
+                            <a (click)="supprimerEmploye(employe)" class="btn btn-danger btn-circle btn-sm" style="margin-left: 5px;">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>

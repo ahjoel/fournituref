@@ -1,0 +1,61 @@
+<ng-container *ngIf="message">
+    <div class="alert alert-dismissible fade show text-left message col-md-4 ml-auto"
+        [ngClass]="{'alert-success': !isError, 'alert-danger': isError}" role="alert">
+        {{ message }}
+        <button type="button" class="close btn-sm" (click)="message = null" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+</ng-container>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Employe</h1>
+    <a routerLink="/employe" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-plus fa-sm text-white-50"></i> Liste Employe</a>
+</div>
+
+<!-- Basic Card Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Enregistrement Employe</h6>
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="form-row">
+                <input type="hidden" class="form-control" name="etat" [(ngModel)]="newEmploye.etat">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Code Employe</label>
+                    <input type="text" class="form-control" name="codeEmp" required [(ngModel)]="newEmploye.codeEmp" id="inputEmail4" placeholder="Code Employe">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword6">Nom Employe</label>
+                    <input type="text" class="form-control" name="nomEmp" required [(ngModel)]="newEmploye.nomEmp" id="inputPassword6" placeholder="Nom Employe">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputPassword5">Prenom Employe</label>
+                    <input type="text" class="form-control" name="prenomEmp" required [(ngModel)]="newEmploye.prenomEmp" id="inputPassword5" placeholder="Prenom Employe">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputState">Service</label>
+                    <select id="inputState" name="serviceEmp" [(ngModel)]="newEmploye.serviceEmp" required class="form-control">
+                        <option value="">Choisir...</option>
+                        <option value="APPRO-STOCK" >APPRO-STOCK</option>
+                        <option value="ADMINISTRATIF">ADMINISTRATIF</option>
+                        <option value="COMPTABILITE">COMPTABILITE</option>
+                        <option value="EXPLOITATION">EXPLOITATION</option>
+                        <option value="INFORMATIQUE">INFORMATIQUE</option>
+                        <option value="COORDINATION-ASSISTANCE">COORDINATION-ASSISTANCE</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col text-right">
+                <button type="reset" class="btn btn-warning">Annuler</button>
+                <button type="submit" (click)="addEmploye()" style="margin-left: 5px;" class="btn btn-primary">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>
