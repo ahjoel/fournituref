@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
+import { Categorie } from '../model/categorie.model';
+import { CategorieService } from '../service/categorie.service';
 import { Router } from '@angular/router';
-import { Categorie } from 'src/app/model/categorie.model';
-import { CategorieService } from 'src/app/service/categorie.service';
 
 @Component({
-  selector: 'app-addcategorie',
-  templateUrl: './addcategorie.component.html',
-  styleUrls: ['./addcategorie.component.css'],
+  selector: 'app-add-categorie',
+  templateUrl: './add-categorie.component.html',
+  styleUrls: ['./add-categorie.component.css']
 })
-export class AddcategorieComponent {
+export class AddCategorieComponent {
   newCategorie = new Categorie();
   message: string | null = null;
   isError: boolean = false;
@@ -40,6 +40,5 @@ export class AddcategorieComponent {
     this.message = message;
     this.isError = isError;
   }
-
 
 }

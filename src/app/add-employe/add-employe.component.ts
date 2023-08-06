@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
+import { Employe } from '../model/employe.model';
+import { EmployeService } from '../service/employe.service';
 import { Router } from '@angular/router';
-import { Employe } from 'src/app/model/employe.model';
-import { EmployeService } from 'src/app/service/employe.service';
 
 @Component({
-  selector: 'app-addemploye',
-  templateUrl: './addemploye.component.html',
-  styleUrls: ['./addemploye.component.css']
+  selector: 'app-add-employe',
+  templateUrl: './add-employe.component.html',
+  styleUrls: ['./add-employe.component.css']
 })
-export class AddemployeComponent {
+export class AddEmployeComponent {
   newEmploye = new Employe();
   message: string | null = null;
   isError: boolean = false;

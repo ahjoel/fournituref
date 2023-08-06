@@ -43,8 +43,10 @@
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item" routerLinkActive="active" [class.active]="router.isActive('/fournitures', true)">
-                <a class="nav-link" routerLink="/fournitures">
+            <li class="nav-item" routerLinkActive="active" [class.active]="router.isActive('/fourniture', true)"
+            [class.active]="router.isActive('/fourniture/add_fourniture', true)"
+            [class.active]="router.isActive('/fourniture/edit_fourniture', true)">
+                <a class="nav-link" routerLink="/fourniture">
                     <i class="fas fa-box"></i>
                     <span>Fourniture</span></a>
             </li>

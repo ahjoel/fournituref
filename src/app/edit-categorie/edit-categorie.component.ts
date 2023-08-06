@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Categorie } from '../model/categorie.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Categorie } from 'src/app/model/categorie.model';
-import { CategorieService } from 'src/app/service/categorie.service';
+import { CategorieService } from '../service/categorie.service';
 
 @Component({
-  selector: 'app-editcategorie',
-  templateUrl: './editcategorie.component.html',
-  styleUrls: ['./editcategorie.component.css'],
+  selector: 'app-edit-categorie',
+  templateUrl: './edit-categorie.component.html',
+  styleUrls: ['./edit-categorie.component.css']
 })
-export class EditcategorieComponent implements OnInit {
+export class EditCategorieComponent {
   currentCategorie = new Categorie();
   categories!: Categorie[];
   message: string | null = null;

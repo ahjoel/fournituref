@@ -1,0 +1,79 @@
+<ng-container *ngIf="message">
+    <div class="alert alert-dismissible fade show text-left message col-md-4 ml-auto"
+        [ngClass]="{'alert-success': !isError, 'alert-danger': isError}" role="alert">
+        {{ message }}
+        <button type="button" class="close btn-sm" (click)="message = null" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+</ng-container>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Fourniture</h1>
+    <a routerLink="/fourniture" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-plus fa-sm text-white-50"></i> Liste Fourniture</a>
+</div>
+
+<!-- Basic Card Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Modification de Fourniture</h6>
+    </div>
+    <div class="card-body">
+        <form autocomplete="off">
+
+            <input type="hidden" class="form-control" name="id"
+                [(ngModel)]="currentFourniture.id">
+
+            <input type="hidden" class="form-control" name="dateModification"
+                [value]="currentFourniture.dateModification" [(ngModel)]="currentFourniture.dateModification">
+
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="inputEmail4">Code Four</label>
+                    <input type="text" class="form-control" name="codeFour"
+                        [(ngModel)]="currentFourniture.codeFour" id="inputEmail4" placeholder="Code Fourniture">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputPassword6">Nom Four</label>
+                    <input type="text" class="form-control" name="nomFour" required [(ngModel)]="currentFourniture.nomFour"
+                        id="inputPassword6" placeholder="Nom Fourniture">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputPassword7">Qte Min Four</label>
+                    <input type="number" class="form-control" name="qteMinFour" required
+                        [(ngModel)]="currentFourniture.qteMinFour" id="inputPassword7" placeholder="Qte Min Fourniture">
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label for="inputPassword9">Mesure Fourniture</label>
+                    <select name="mesureFour" [(ngModel)]="currentFourniture.mesureFour" id="inputPassword9" required
+                        class="form-control">
+                        <option>Choisir une mesure</option>
+                        <option value="UNITE">UNITE</option>
+                        <option value="CARTON">CARTON</option>
+                        <option value="BOITE_10">BOITE_10</option>
+                        <option value="BOITE_20">BOITE_20</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputState8">Categorie</label>
+                    <select class="form-control" name="updatedCatId" [(ngModel)]="updatedCatId">
+                        <option>Choisir une categorie</option>
+                        <option *ngFor="let cat of categories" [value]="cat.id">
+                            {{cat.nomCat}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col text-right">
+                <button type="reset" class="btn btn-warning">Annuler</button>
+                <button type="submit" (click)="updateFourniture()" style="margin-left: 5px;"
+                    class="btn btn-primary">Enregistrer</button>
+            </div>
+
+        </form>
+    </div>
+</div>

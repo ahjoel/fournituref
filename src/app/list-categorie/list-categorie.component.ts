@@ -1,16 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-declare var $: any; 
-import 'datatables.net';
+import { Component } from '@angular/core';
 import { Categorie } from '../model/categorie.model';
 import { CategorieService } from '../service/categorie.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-categorie',
-  templateUrl: './categorie.component.html',
-  styleUrls: ['./categorie.component.css']
+  selector: 'app-list-categorie',
+  templateUrl: './list-categorie.component.html',
+  styleUrls: ['./list-categorie.component.css']
 })
-export class CategorieComponent implements OnInit {
+export class ListCategorieComponent {
   categories: Categorie[];
   message: string | null = null; 
   isError: boolean = false;

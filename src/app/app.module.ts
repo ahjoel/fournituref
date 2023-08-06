@@ -5,14 +5,17 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import { CategorieComponent } from './categorie/categorie.component';
-import { AddcategorieComponent } from './categorie/addcategorie/addcategorie.component';
-import { EditcategorieComponent } from './categorie/editcategorie/editcategorie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { EmployeComponent } from './employe/employe.component';
-import { AddemployeComponent } from './employe/addemploye/addemploye.component';
-import { EditemployeComponent } from './employe/editemploye/editemploye.component';
+import { ListCategorieComponent } from './list-categorie/list-categorie.component';
+import { AddCategorieComponent } from './add-categorie/add-categorie.component';
+import { EditCategorieComponent } from './edit-categorie/edit-categorie.component';
+import { ListEmployeComponent } from './list-employe/list-employe.component';
+import { AddEmployeComponent } from './add-employe/add-employe.component';
+import { EditEmployeComponent } from './edit-employe/edit-employe.component';
+import { ListFournitureComponent } from './list-fourniture/list-fourniture.component';
+import { AddFournitureComponent } from './add-fourniture/add-fourniture.component';
+import { EditFournitureComponent } from './edit-fourniture/edit-fourniture.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +23,15 @@ import { EditemployeComponent } from './employe/editemploye/editemploye.componen
     DashboardComponent,
     FooterComponent,
     HeaderComponent,
-    CategorieComponent,
-    AddcategorieComponent,
-    EditcategorieComponent,
-    EmployeComponent,
-    AddemployeComponent,
-    EditemployeComponent,
+    ListCategorieComponent,
+    AddCategorieComponent,
+    EditCategorieComponent,
+    ListEmployeComponent,
+    AddEmployeComponent,
+    EditEmployeComponent,
+    ListFournitureComponent,
+    AddFournitureComponent,
+    EditFournitureComponent,
   ],
   imports: [
     BrowserModule,

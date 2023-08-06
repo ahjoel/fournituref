@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
+import { Employe } from '../model/employe.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Employe } from 'src/app/model/employe.model';
-import { EmployeService } from 'src/app/service/employe.service';
+import { EmployeService } from '../service/employe.service';
 
 @Component({
-  selector: 'app-editemploye',
-  templateUrl: './editemploye.component.html',
-  styleUrls: ['./editemploye.component.css']
+  selector: 'app-edit-employe',
+  templateUrl: './edit-employe.component.html',
+  styleUrls: ['./edit-employe.component.css']
 })
-export class EditemployeComponent {
+export class EditEmployeComponent {
   currentEmploye = new Employe();
   employes!: Employe[];
   message: string | null = null;

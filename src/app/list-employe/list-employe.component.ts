@@ -2,15 +2,13 @@ import { Component } from '@angular/core';
 import { Employe } from '../model/employe.model';
 import { EmployeService } from '../service/employe.service';
 import { Router } from '@angular/router';
-declare var $: any; 
-import 'datatables.net';
 
 @Component({
-  selector: 'app-employe',
-  templateUrl: './employe.component.html',
-  styleUrls: ['./employe.component.css'],
+  selector: 'app-list-employe',
+  templateUrl: './list-employe.component.html',
+  styleUrls: ['./list-employe.component.css']
 })
-export class EmployeComponent {
+export class ListEmployeComponent {
   employes: Employe[];
   message: string | null = null;
   isError: boolean = false;
@@ -24,7 +22,6 @@ export class EmployeComponent {
   //Initialisation des données avec Datatable
   ngAfterViewInit() {
     this.employeService.listeEmploye().subscribe((emps) => {
-      //console.log(cats);
       this.employes = emps;
       $('#dataTable').DataTable();
     });
