@@ -16,6 +16,9 @@ import { EditEmployeComponent } from './edit-employe/edit-employe.component';
 import { ListFournitureComponent } from './list-fourniture/list-fourniture.component';
 import { AddFournitureComponent } from './add-fourniture/add-fourniture.component';
 import { EditFournitureComponent } from './edit-fourniture/edit-fourniture.component';
+import { ListLigneCommandeComponent } from './list-ligne-commande/list-ligne-commande.component';
+import { AddLigneCommandeComponent } from './add-ligne-commande/add-ligne-commande.component';
+import { EditLigneCommandeComponent } from './edit-ligne-commande/edit-ligne-commande.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { EditFournitureComponent } from './edit-fourniture/edit-fourniture.compo
     ListFournitureComponent,
     AddFournitureComponent,
     EditFournitureComponent,
+    ListLigneCommandeComponent,
+    AddLigneCommandeComponent,
+    EditLigneCommandeComponent,
   ],
   imports: [
     BrowserModule,

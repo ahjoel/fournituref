@@ -1,0 +1,69 @@
+<ng-container *ngIf="message">
+    <div class="alert alert-dismissible fade show text-left message col-md-4 ml-auto"
+        [ngClass]="{'alert-success': !isError, 'alert-danger': isError}" role="alert">
+        {{ message }}
+        <button type="button" class="close btn-sm" (click)="message = null" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+</ng-container>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Commande Fourniture</h1>
+    <a routerLink="/lignecommande" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-plus fa-sm text-white-50"></i> Liste Commande Fourniture</a>
+</div>
+
+<!-- Basic Card Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Modification de {{currentLigneCommande?.commande?.codeCom}} - {{currentLigneCommande?.fourniture?.nomFour}}</h6>
+    </div>
+    <div class="card-body">
+        <form autocomplete="off">
+
+            <input type="hidden" class="form-control" name="id"
+                [(ngModel)]="currentLigneCommande.id">
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="inputEmail4">Code Commande</label>
+                    <select class="form-control" [disabled]="true" name="updatedComId" [(ngModel)]="updatedComId">
+                        <option>Choisir une commande</option>
+                        <option *ngFor="let com of commandes" [value]="com.id">
+                            {{com.codeCom}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputPassword6">Four</label>
+                    <select class="form-control" [disabled]="true" name="updatedFourId" [(ngModel)]="updatedFourId">
+                        <option>Choisir une commande</option>
+                        <option *ngFor="let four of fournitures" [value]="four.id">
+                            {{four.nomFour}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputPassword7">Qte Commande</label>
+                    <input type="number" class="form-control" name="qteLigneCom" required
+                        [(ngModel)]="currentLigneCommande.qteLigneCom" id="inputPassword7" placeholder="Qte Commandee">
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label for="inputPassword9">Mesure Fourniture</label>
+                    <input type="text" readonly class="form-control" name="etatLigneCom" required
+                        [(ngModel)]="currentLigneCommande.etatLigneCom" id="inputPassword7" placeholder="Qte Commandee">
+                </div>
+            </div>
+
+            <div class="col text-right">
+                <button type="reset" class="btn btn-warning">Annuler</button>
+                <button type="submit" (click)="updateLigneCommande()" style="margin-left: 5px;"
+                    class="btn btn-primary">Modifier</button>
+            </div>
+
+        </form>
+    </div>
+</div>

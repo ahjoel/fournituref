@@ -53,7 +53,7 @@
                     <label for="inputPassword9">Mesure Fourniture</label>
                     <select name="mesureFour" [(ngModel)]="newFourniture.mesureFour" id="inputPassword9" required
                         class="form-control">
-                        <option>Choisir une mesure</option>
+                        <option selected value="">Choisir une mesure</option>
                         <option value="UNITE">UNITE</option>
                         <option value="CARTON">CARTON</option>
                         <option value="BOITE_10">BOITE_10</option>
@@ -63,7 +63,7 @@
                 <div class="form-group col-md-3">
                     <label for="inputState8">Categorie</label>
                     <select class="form-control" name="newIdCat" [(ngModel)]="newIdCat">
-                        <option>Choisir une categorie</option>
+                        <option selected value="">Choisir une categorie</option>
                         <option *ngFor="let cat of categories" [value]="cat.id">
                             {{cat.nomCat}}
                         </option>

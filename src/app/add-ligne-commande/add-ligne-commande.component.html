@@ -1,0 +1,140 @@
+<ng-container *ngIf="message">
+  <div class="alert alert-dismissible fade show text-left message col-md-4 ml-auto"
+      [ngClass]="{'alert-success': !isError, 'alert-danger': isError}" role="alert">
+      {{ message }}
+      <button type="button" class="close btn-sm" (click)="message = null" aria-label="Close">
+          <span aria-hidden="true">×</span>
+      </button>
+  </div>
+</ng-container>
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Enregistrement Commande Fourniture</h1>
+
+    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" routerLink="/lignecommande">
+        <i class="fas fa-arrow-left fa-sm text-white-50" style="margin-right: 5px;"></i>Liste Commande Fourniture</a>
+</div>
+
+<form #form_commande="ngForm" (submit)="onSubmit()">
+<div class="card shadow mb-4">
+    <!-- <div class="card-header py-1">
+        <h6 class="m-0 font-weight-bold text-primary">Enregistrement de Commande</h6>
+    </div> -->
+    <div class="card-body">
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label>Code Commande</label>
+                <input type="text" class="form-control" readonly [(ngModel)]="codeCom"  name="codeCom">
+              </div>
+              <div class="form-group col-md-4">
+                <label>Date Commande</label>
+                <input type="date" class="form-control" required [(ngModel)]="dateCom" name="dateCom">
+              </div>
+              <div class="form-group col-md-4">
+                <label>Employes</label>
+                <select  name="employe" required [(ngModel)]="employe" class="form-control">
+                  <option selected value="">Choisir une employe</option>
+                  <option *ngFor="let employe of employes" [value]="employe.id">{{employe.codeEmp}} {{employe.nomEmp}} - {{employe.prenomEmp}}</option>
+                </select>
+              </div>
+            </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <!-- Default Card Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">
+                Création de Commande Fourniture
+                </h6>
+            </div>
+            <div class="card-body">
+                <form #form="ngForm">
+                    <div class="form-group">
+                      <label>Fourniture</label>
+                      <select #fourniture="ngModel" name="fourniture" required [(ngModel)]="ligneCommandeObjet.fourniture" class="form-control">
+                        <option selected value="">Choisir une fourniture</option>
+                        <option *ngFor="let fourniture of fournitures" [value]="fourniture.id">{{fourniture.codeFour}} {{fourniture.nomFour}} - {{fourniture.mesureFour}}</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Quantité Commandée</label>
+                      <input type="number" class="form-control" name="qteLigneCom" #qteLigneCom="ngModel" required [(ngModel)]="ligneCommandeObjet.qteLigneCom">
+                    </div>
+                    
+                    <button type="reset" class="btn btn-sm btn-warning" id="btn-cancel">Annuler</button>
+                    <button type="button" class="btn btn-sm btn-primary" style="margin-left: 5px;" [disabled]="form.invalid" *ngIf="!isedit" (click)="onSave()">Ajouter</button>
+                    <button type="button" class="btn btn-sm btn-primary" style="margin-left: 5px;" [disabled]="form.invalid" *ngIf="isedit" (click)="onUpdate(ligneCommandeObjet)">Modifier</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+
+        <!-- Dropdown Card Example -->
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div
+                class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Liste de Commande Fourniture</h6>
+            </div>
+            <div class="card-body">    
+                <div class="table-responsive-sm table-wrapper">          
+                    <table class="table table-bordered" id="table_2">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Fourniture</th>
+                          <th>Qte Commandée</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngIf="data?.length !=0">
+                          <tr *ngFor="let item of data; let lg = index">
+                            <td>{{lg+1}}</td>
+                            <td>{{item.fourniture?.codeFour}} {{item.fourniture?.nomFour}} - {{item.fourniture?.mesureFour}}</td>
+                            <td>{{item.qteLigneCom}}</td>
+                            <td>
+                              <a class="btn btn-info btn-circle btn-sm" (click)="onEdit(item)">
+                                <i class="fas fa-pen"></i>
+                              </a>
+                              <a class="btn btn-danger btn-circle btn-sm" (click)="onDelete(item)">
+                                  <i class="fas fa-trash"></i>
+                              </a>
+                            </td>
+                          </tr>
+                        </ng-container>
+
+                        <ng-container *ngIf="data?.length == 0">
+                          <tr>
+                            <td colspan="4" class="text-center">Aucun Enregistrement</td>
+                          </tr>
+                        </ng-container>
+                        
+                      </tbody>
+                    </table>
+                    </div>
+            </div>
+
+            
+                
+            
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800"></h1>
+    <button type="submit" [disabled]="form_commande.invalid" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-plus fa-sm text-white-50" style="margin-right: 5px;"></i>Enregistrer Commande
+    </button>
+</div>
+
+</form>

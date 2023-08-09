@@ -26,6 +26,7 @@ export class AddEmployeComponent {
           false
         );
         this.newEmploye = new Employe();
+        this.newEmploye.serviceEmp = null;
         this.router.navigate(['/employe/add_employe']);
       },
       (error) => {

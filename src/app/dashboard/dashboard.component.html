@@ -52,9 +52,9 @@
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item" routerLinkActive="active" [class.active]="router.isActive('/commandes', true)"
-             [class.active]="router.isActive('/commandes/ajout_commande', true)">
-                <a class="nav-link" routerLink="/commandes">
+            <li class="nav-item" routerLinkActive="active" [class.active]="router.isActive('/lignecommande', true)"
+             [class.active]="router.isActive('/lignecommande/ajout_lignecommande', true)">
+                <a class="nav-link" routerLink="/lignecommande">
                     <i class="fas fa-list"></i>
                     <span>Commande</span></a>
             </li>
@@ -251,7 +251,7 @@
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
+    <a class="scroll-to-top rounded" href="javascript:void(0);" (click)="scrollToTop()">
         <i class="fas fa-angle-up"></i>
     </a>
 

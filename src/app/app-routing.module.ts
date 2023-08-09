@@ -10,6 +10,9 @@ import { EditEmployeComponent } from './edit-employe/edit-employe.component';
 import { ListFournitureComponent } from './list-fourniture/list-fourniture.component';
 import { AddFournitureComponent } from './add-fourniture/add-fourniture.component';
 import { EditFournitureComponent } from './edit-fourniture/edit-fourniture.component';
+import { ListLigneCommandeComponent } from './list-ligne-commande/list-ligne-commande.component';
+import { AddLigneCommandeComponent } from './add-ligne-commande/add-ligne-commande.component';
+import { EditLigneCommandeComponent } from './edit-ligne-commande/edit-ligne-commande.component';
 
 const routes: Routes = [
   {path: "*", component: DashboardComponent},
@@ -22,6 +25,9 @@ const routes: Routes = [
   {path: "fourniture", component: ListFournitureComponent},
   {path: "fourniture/add_fourniture", component: AddFournitureComponent},
   {path: "fourniture/edit_fourniture/:id", component: EditFournitureComponent},
+  {path: "lignecommande", component: ListLigneCommandeComponent},
+  {path: "lignecommande/add_lignecommande", component: AddLigneCommandeComponent},
+  {path: "lignecommande/edit_lignecommande/:id", component: EditLigneCommandeComponent},
 ];
 
 @NgModule({

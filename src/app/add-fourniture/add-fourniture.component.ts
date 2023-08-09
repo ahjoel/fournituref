@@ -48,7 +48,8 @@ export class AddFournitureComponent {
           false
         );
         this.newFourniture = new Fourniture();
-        this.newIdCat = null!;
+        this.newFourniture.mesureFour = null;
+        this.newIdCat = null;
         this.router.navigate(['/fourniture/add_fourniture']);
       },
       (error) => {
