@@ -12,3 +12,9 @@ export const apiURLlCom: string = 'http://localhost:8080/api/lignecommande';
 
 export const apiURLComList: string = 'http://localhost:8080/api/commandes';
 export const apiURLCom: string = 'http://localhost:8080/api/commande';
+
+export const apiURLLivList: string = 'http://localhost:8080/api/livraisons';
+export const apiURLLiv: string = 'http://localhost:8080/api/livraison';
+
+export const apiURLlLivList: string = 'http://localhost:8080/api/lignelivraisons';
+export const apiURLlLiv: string = 'http://localhost:8080/api/lignelivraison';
