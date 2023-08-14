@@ -8,7 +8,7 @@ export class Lignelivraison {
     prixLivraison!: number;
     etatLivraison!: string;
     livraison!: Livraison|any;
-    ligneCommande!: Lignecommande|any;
+    lignecommande!: Lignecommande|any;
     fourniture!: Fourniture|any;
   }
   

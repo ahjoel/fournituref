@@ -30,8 +30,8 @@ export class AddFournitureComponent {
     this.categorieService.listeCategorie().subscribe((cats) => {
       this.categories = cats;
     });
-    this.newFourniture.dateCreation = new Date();
-    this.newFourniture.dateModification = new Date();
+    // this.newFourniture.dateCreation = new Date();
+    // this.newFourniture.dateModification = new Date();
     this.newFourniture.etatFour = "ACTIVE";
   }
 
@@ -56,9 +56,9 @@ export class AddFournitureComponent {
         const errorMessage = 
           error.error.message ||
           'Failed to save Fourniture. Please try again later.';
-        //this.showMessage(errorMessage, true);
-        this.messageService.setErrorMessage(errorMessage);
-        this.router.navigate(['/fourniture']);
+        this.showMessage(errorMessage, true);
+        // this.messageService.setErrorMessage(errorMessage);
+        // this.router.navigate(['/fourniture']);
       }
     );
 

@@ -27,7 +27,7 @@ export class LignelivraisonService {
   }
 
   modifierLigneLivraison(ll: Lignelivraison): Observable<Lignelivraison> {
-    return this.http.put<Lignelivraison>(apiURLlLiv + '/modifierlcom', ll, httpOptions);
+    return this.http.put<Lignelivraison>(apiURLlLiv + '/modifierlliv', ll, httpOptions);
   }
 
   supprimerLigneLivraison(id: any) {

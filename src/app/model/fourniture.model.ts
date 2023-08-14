@@ -6,8 +6,8 @@ export class Fourniture {
   nomFour!: number;
   mesureFour!: string;
   qteMinFour!: number;
-  dateCreation!: Date;
-  dateModification!: Date;
+  // dateCreation!: Date;
+  // dateModification!: Date;
   categorie!: Categorie;
   etatFour!: string;
 }

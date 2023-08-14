@@ -271,7 +271,7 @@ export class AddLigneCommandeComponent {
               commande: { id: this.commandeId },
               fourniture: localData[index].fourniture,
               qteLigneCom: localData[index].qteLigneCom,
-              etatLigneCom: 'Non Livrée',
+              etatLigneCom: 'NON-LIV',
             };
             // Deserialize Fourniture Id
             ligneCommandeFourniture.fourniture = this.fournitures.find(

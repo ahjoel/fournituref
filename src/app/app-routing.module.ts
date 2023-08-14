@@ -13,6 +13,9 @@ import { EditFournitureComponent } from './edit-fourniture/edit-fourniture.compo
 import { ListLigneCommandeComponent } from './list-ligne-commande/list-ligne-commande.component';
 import { AddLigneCommandeComponent } from './add-ligne-commande/add-ligne-commande.component';
 import { EditLigneCommandeComponent } from './edit-ligne-commande/edit-ligne-commande.component';
+import { ListLigneLivraisonComponent } from './list-ligne-livraison/list-ligne-livraison.component';
+import { AddLigneLivraisonComponent } from './add-ligne-livraison/add-ligne-livraison.component';
+import { EditLigneLivraisonComponent } from './edit-ligne-livraison/edit-ligne-livraison.component';
 
 const routes: Routes = [
   {path: "*", component: DashboardComponent},
@@ -28,6 +31,9 @@ const routes: Routes = [
   {path: "lignecommande", component: ListLigneCommandeComponent},
   {path: "lignecommande/add_lignecommande", component: AddLigneCommandeComponent},
   {path: "lignecommande/edit_lignecommande/:id", component: EditLigneCommandeComponent},
+  {path: "lignelivraison", component: ListLigneLivraisonComponent},
+  {path: "lignelivraison/add_lignelivraison", component: AddLigneLivraisonComponent},
+  {path: "lignelivraison/edit_lignelivraison/:id", component: EditLigneLivraisonComponent},
 ];
 
 @NgModule({

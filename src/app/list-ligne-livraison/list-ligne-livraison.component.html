@@ -1,1 +1,71 @@
-<p>list-ligne-livraison works!</p>
+<ng-container *ngIf="message">
+    <div class="alert alert-dismissible fade show text-left message col-md-4 ml-auto"
+        [ngClass]="{'alert-success': !isError, 'alert-danger': isError}" role="alert">
+        {{ message }}
+        <button type="button" class="close btn-sm" (click)="message = null" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+</ng-container>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Livraison Fourniture</h1>
+
+    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" routerLink="add_lignelivraison">
+        <i class="fas fa-plus fa-sm text-white-50"></i> Ajouter</a>
+</div>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Liste Livraison Fourniture</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive table-wrapper">
+            <table id="dataTable" class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ref Commande</th>
+                        <th>Ref Livraison</th>
+                        <th>Fournisseur</th>
+                        <th>Date Livraison</th>
+                        <th>Fourniture</th>
+                        <th>Qte</th>
+                        <th>Prix</th>
+                        <th>Statut</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let lignelivraison of lignelivraisons; let i = index;">
+                        <td>{{i + 1}}</td>
+                        <td>{{lignelivraison.lignecommande?.commande.codeCom}}</td>
+                        <td>{{lignelivraison.livraison?.codeLiv}}</td>
+                        <td>{{lignelivraison.livraison?.fournisseurLiv}}</td>
+                        <td>{{lignelivraison.livraison?.dateLiv}}</td>
+                        <td>{{lignelivraison.fourniture?.nomFour}} - {{lignelivraison.fourniture?.mesureFour}}</td>
+                        <td>{{lignelivraison.qteLivraison}}</td>
+                        <td>{{lignelivraison.prixLivraison}}</td>
+                        <td>{{lignelivraison.etatLivraison}}</td>
+                        <td>
+                            <a [routerLink]="['/lignelivraison/edit_lignelivraison', lignelivraison.id]"
+                                class="btn btn-info btn-circle btn-sm">
+                                <i class="fas fa-pen" data-toggle="tooltip" data-placement="top" title="Modifier une livraison"></i>
+                            </a>
+                            <a (click)="supprimerLigneLivraison(lignelivraison)"
+                                class="btn btn-danger btn-circle btn-sm" style="margin-left: 5px;">
+                                <i class="fas fa-ban" data-toggle="tooltip" data-placement="top" title="Désactiver une livraison"></i>
+                            </a>
+                            <a (click)="validerLigneLivraison(lignelivraison)" *ngIf="lignelivraison.etatLivraison === 'NON-VA'"
+                                class="btn btn-success btn-circle btn-sm" style="margin-left: 5px;">
+                                <i class="fas fa-check" data-toggle="tooltip" data-placement="top" title="Valider une livraison"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

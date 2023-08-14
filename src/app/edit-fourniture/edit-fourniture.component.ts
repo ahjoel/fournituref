@@ -29,7 +29,7 @@ export class EditFournitureComponent {
       this.categories = cats;
       //console.log(cats);
     });
-    this.currentFourniture.dateModification = new Date();
+    // this.currentFourniture.dateModification = new Date();
     this.fournitureService
       .consulterFourniture(this.activatedRoute.snapshot.params['id'])
       .subscribe(

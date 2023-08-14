@@ -56,10 +56,10 @@
                         <td>
                             <a [routerLink]="['/fourniture/edit_fourniture', fourniture.id]"
                                 class="btn btn-info btn-circle btn-sm">
-                                <i class="fas fa-pen"></i>
+                                <i class="fas fa-pen" data-toggle="tooltip" data-placement="top" title="Modifier une livraison"></i>
                             </a>
                             <a (click)="supprimerFourniture(fourniture)" class="btn btn-danger btn-circle btn-sm" style="margin-left: 5px;">
-                                <i class="fas fa-trash"></i>
+                                <i class="fas fa-trash" data-toggle="tooltip" data-placement="top" title="Supprimer une livraison"></i>
                             </a>
                         </td>
                     </tr>

@@ -1,1 +1,172 @@
-<p>add-ligne-livraison works!</p>
+<ng-container *ngIf="message">
+    <div class="alert alert-dismissible fade show text-left message col-md-4 ml-auto"
+        [ngClass]="{'alert-success': !isError, 'alert-danger': isError}" role="alert">
+        {{ message }}
+        <button type="button" class="close btn-sm" (click)="message = null" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+</ng-container>
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Enregistrement Livraison Fourniture</h1>
+
+    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" routerLink="/lignelivraison">
+        <i class="fas fa-arrow-left fa-sm text-white-50" style="margin-right: 5px;"></i>Liste Livraison Fourniture</a>
+</div>
+
+<form #form_livraison="ngForm" (submit)="onSubmit()">
+    <div class="card shadow mb-4">
+        <!-- <div class="card-header py-1">
+          <h6 class="m-0 font-weight-bold text-primary">Enregistrement de Commande</h6>
+      </div> -->
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label>Code Livraison</label>
+                    <input type="text" class="form-control" readonly [(ngModel)]="codeLiv" name="codeLiv">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Date Livraison</label>
+                    <input type="date" class="form-control" required [(ngModel)]="dateLiv" name="dateLiv">
+                </div>
+                <div class="form-group col-md-2">
+                    <label>TVA Livraison</label>
+                    <input readonly type="number" class="form-control" required [(ngModel)]="tvaLiv" name="tvaLiv">
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Fournisseur</label>
+                    <input type="text" class="form-control" required [(ngModel)]="fournisseurLiv" name="fournisseur">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <!-- Default Card Example -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        Création de Livraison Fourniture
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <form #form="ngForm">
+                        <div class="form-group">
+                            <label>Commande Fourniture</label>
+                            <select #lignecommande="ngModel" name="lignecommande" required
+                                [(ngModel)]="ligneLivraisonObjet.lignecommande" (change)="onChangeCommande()"
+                                class="form-control">
+                                <option selected value="">Choisir une Commande</option>
+                                <option *ngFor="let lignecommande of lignecommandes" [value]="lignecommande.id">
+                                    {{lignecommande.commande?.codeCom}} {{lignecommande.fourniture?.nomFour}} -
+                                    {{lignecommande.fourniture?.mesureFour}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Livraison Fourniture</label>
+                            <select #fourniture="ngModel" name="fourniture" required [disabled]="isedit"
+                                [(ngModel)]="ligneLivraisonObjet.fourniture" class="form-control">
+                                <!-- <option selected value="">Choisir une fourniture</option> -->
+                                <option selected *ngFor="let fourniture of data" [value]="fourniture.fourniture?.id">
+                                    {{fourniture.fourniture?.codeFour}} {{fourniture.fourniture?.nomFour}} -
+                                    {{fourniture.fourniture?.mesureFour}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Quantité Livré</label>
+                            <input type="number" class="form-control" name="qteLivraison" #qteLivraison="ngModel"
+                                required [(ngModel)]="ligneLivraisonObjet.qteLivraison">
+                        </div>
+                        <div class="form-group">
+                            <label>Prix Livré</label>
+                            <input type="number" class="form-control" name="prixLivraison" #prixLivraison="ngModel"
+                                required [(ngModel)]="ligneLivraisonObjet.prixLivraison">
+                        </div>
+
+                        <button type="reset" class="btn btn-sm btn-warning" id="btn-cancel">Annuler</button>
+                        <button type="button" class="btn btn-sm btn-primary" style="margin-left: 5px;"
+                            [disabled]="form.invalid" *ngIf="!isedit" (click)="onSave()">Ajouter</button>
+                        <button type="button" class="btn btn-sm btn-primary" style="margin-left: 5px;" [disabled]="form.invalid" *ngIf="isedit" (click)="onUpdate(ligneLivraisonObjet)">Modifier</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+
+            <!-- Dropdown Card Example -->
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-1 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Liste de Livraison Fourniture</h6>
+
+                    <span style="float: right; color:rgb(243, 101, 101); font-style: bold">Total TTC :
+                        {{formatNumberWithCommas(total)}} F CFA</span>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive-sm table-wrapper">
+                        <table class="table table-bordered" id="table_2">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Commande</th>
+                                    <th>Fourniture Livré</th>
+                                    <th>Qte Livré</th>
+                                    <th>Prix Livré</th>
+                                    <th>Sous Total</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngIf="data?.length !=0">
+                                    <tr *ngFor="let item of datas; let lg = index">
+                                        <td>{{lg+1}}</td>
+                                        <td>{{item.lignecommande?.commande.codeCom}}</td>
+                                        <td>{{item.fourniture?.codeFour}} {{item.fourniture?.nomFour}} -
+                                            {{item.fourniture?.mesureFour}}</td>
+                                        <td>{{item.qteLivraison}}</td>
+                                        <td>{{item.prixLivraison}}</td>
+                                        <td>{{item.qteLivraison * item.prixLivraison}}</td>
+                                        <td>
+                                            <a class="btn btn-info btn-circle btn-sm" (click)="onEdit(item)">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                            <a class="btn btn-danger btn-circle btn-sm" (click)="onDelete(item)">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+
+                                <ng-container *ngIf="data?.length == 0">
+                                    <tr>
+                                        <td colspan="4" class="text-center">Aucun Enregistrement</td>
+                                    </tr>
+                                </ng-container>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"></h1>
+        <button type="submit" [disabled]="form_livraison.invalid"
+            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-plus fa-sm text-white-50" style="margin-right: 5px;"></i>Enregistrer Livraison
+        </button>
+    </div>
+
+</form>
