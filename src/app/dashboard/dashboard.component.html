@@ -69,8 +69,10 @@
             </li>
             
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item" routerLinkActive="active" [class.active]="router.isActive('/sortie', true)"
+            routerLinkActive="active" [class.active]="router.isActive('/sortie/ajout_sortie', true)"
+            routerLinkActive="active" [class.active]="router.isActive('/sortie/edit_sortie', true)">
+                <a class="nav-link" routerLink="/sortie">
                     <i class="far fa-arrow-alt-circle-left"></i>
                     <span>Sortie</span></a>
             </li>

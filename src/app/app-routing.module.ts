@@ -16,6 +16,9 @@ import { EditLigneCommandeComponent } from './edit-ligne-commande/edit-ligne-com
 import { ListLigneLivraisonComponent } from './list-ligne-livraison/list-ligne-livraison.component';
 import { AddLigneLivraisonComponent } from './add-ligne-livraison/add-ligne-livraison.component';
 import { EditLigneLivraisonComponent } from './edit-ligne-livraison/edit-ligne-livraison.component';
+import { AddSortieComponent } from './add-sortie/add-sortie.component';
+import { ListSortieComponent } from './list-sortie/list-sortie.component';
+import { EditSortieComponent } from './edit-sortie/edit-sortie.component';
 
 const routes: Routes = [
   {path: "*", component: DashboardComponent},
@@ -34,6 +37,9 @@ const routes: Routes = [
   {path: "lignelivraison", component: ListLigneLivraisonComponent},
   {path: "lignelivraison/add_lignelivraison", component: AddLigneLivraisonComponent},
   {path: "lignelivraison/edit_lignelivraison/:id", component: EditLigneLivraisonComponent},
+  {path: "sortie", component: ListSortieComponent},
+  {path: "sortie/add_sortie", component: AddSortieComponent},
+  {path: "sortie/edit_sortie/:id", component: EditSortieComponent},
 ];
 
 @NgModule({

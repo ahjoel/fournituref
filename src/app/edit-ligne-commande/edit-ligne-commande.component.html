@@ -47,12 +47,12 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label for="inputPassword7">Qte Commande</label>
-                    <input type="number" class="form-control" name="qteLigneCom" required
+                    <input type="number" [readonly]="currentLigneCommande.etatLigneCom === 'LIVREE'" class="form-control" name="qteLigneCom" required
                         [(ngModel)]="currentLigneCommande.qteLigneCom" id="inputPassword7" placeholder="Qte Commandee">
                 </div>
 
                 <div class="form-group col-md-2">
-                    <label for="inputPassword9">Mesure Fourniture</label>
+                    <label for="inputPassword9">Etat Commande</label>
                     <input type="text" readonly class="form-control" name="etatLigneCom" required
                         [(ngModel)]="currentLigneCommande.etatLigneCom" id="inputPassword7" placeholder="Qte Commandee">
                 </div>

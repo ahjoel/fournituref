@@ -44,6 +44,12 @@ export class ListLigneCommandeComponent {
       this.ligneCommandeService.supprimerLigneCommande(lc.id).subscribe(() => {
         this.chargerLigneCommandes();
         this.router.navigate(['/lignecommande']);
+      },
+      (error) => {
+        const errorMessage =
+          error.error.message ||
+          'Failed to Delete Commmande Fournitures. Commande liée.';
+        this.showMessage(errorMessage, true);
       });
   }
 

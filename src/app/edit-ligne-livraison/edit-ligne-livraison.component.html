@@ -47,13 +47,13 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label for="inputPassword7">Qte Livrée</label>
-                    <input type="number" class="form-control" name="qteLivraison" required
+                    <input type="number" [readonly]="currentLigneLivraison.etatLivraison === 'VA'" class="form-control" name="qteLivraison" required
                         [(ngModel)]="currentLigneLivraison.qteLivraison" id="inputPassword7" placeholder="Qte Livrée">
                 </div>
 
                 <div class="form-group col-md-2">
                     <label for="inputPassword9">Prix Fourniture</label>
-                    <input type="text" class="form-control" name="prixLivraison" required
+                    <input type="number" [readonly]="currentLigneLivraison.etatLivraison === 'VA'" class="form-control" name="prixLivraison" required
                         [(ngModel)]="currentLigneLivraison.prixLivraison" id="inputPassword7" placeholder="Qte Livrée">
                 </div>
             </div>

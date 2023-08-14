@@ -19,3 +19,9 @@ export const apiURLLiv: string = 'http://localhost:8080/api/livraison';
 export const apiURLLcomNonLivree: string = 'http://localhost:8080/api/lignecommandes/nonlivree';
 export const apiURLlLivList: string = 'http://localhost:8080/api/lignelivraisons';
 export const apiURLlLiv: string = 'http://localhost:8080/api/lignelivraison';
+
+export const apiURLSortList: string = 'http://localhost:8080/api/sorties';
+export const apiURLSort: string = 'http://localhost:8080/api/sortie';
+
+export const apiURLMouvList: string = 'http://localhost:8080/api/mouvements';
+export const apiURLMouv: string = 'http://localhost:8080/api/mouvement';

@@ -5,6 +5,8 @@ import { MessageService } from '../service/message.service';
 import { Router } from '@angular/router';
 import { LignecommandeService } from '../service/lignecommande.service';
 import { Lignecommande } from '../model/lignecommande.model';
+import { Mouvement } from '../model/mouvement.model';
+import { MouvementService } from '../service/mouvement.service';
 
 @Component({
   selector: 'app-list-ligne-livraison',
@@ -13,6 +15,7 @@ import { Lignecommande } from '../model/lignecommande.model';
 })
 export class ListLigneLivraisonComponent {
   lignelivraisons: Lignelivraison[];
+  mouvement= new Mouvement();
   lignecommande: Lignecommande;
   message: string | null = null;
   errorMessage: string | null = null;
@@ -20,6 +23,7 @@ export class ListLigneLivraisonComponent {
 
   constructor(
     private ligneLivraisonService: LignelivraisonService,
+    private mouvementService: MouvementService,
     private lignecommandeService: LignecommandeService,
     private router: Router
   ) {}
@@ -48,6 +52,12 @@ export class ListLigneLivraisonComponent {
         .subscribe(() => {
           this.chargerLigneLivraison();
           this.router.navigate(['/lignelivraison']);
+        },
+        (error) => {
+          const errorMessage =
+            error.error.message ||
+            'Failed to Delete Livraison Fournitures. Livraison liée.';
+          this.showMessage(errorMessage, true);
         });
   }
 
@@ -64,6 +74,30 @@ export class ListLigneLivraisonComponent {
     if (conf) {
       lv.etatLivraison = 'VA';
       // this.lignecommande.etatLigneCom
+      const currentDate = new Date();
+      const day = currentDate.getDate().toString().padStart(2, '0');
+      const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+      const year = currentDate.getFullYear().toString();
+      const date_code = `${year}-${month}-${day}`;
+      this.mouvement.datemouv = date_code;
+      this.mouvement.qteMouv = lv.qteLivraison;
+      this.mouvement.natureMouv = 'IN';
+      this.mouvement.fourniture = lv.fourniture.id;
+      this.mouvement.lignelivraison = lv.id;
+
+      const lignemouvement = {
+        id: null,
+        datemouv: date_code,
+        natureMouv: 'IN',
+        lignelivraison: { id: lv.id },
+        fourniture: { id: lv.fourniture.id },
+        qteMouv: lv.qteLivraison, 
+        sortie: null,
+        codeMouv: null,
+        dateInventaire: null,
+        etatMouv: 'ACTIVE',
+      };
+      
       this.ligneLivraisonService.modifierLigneLivraison(lv).subscribe(
         () => {
           this.lignecommandeService
@@ -77,7 +111,18 @@ export class ListLigneLivraisonComponent {
                 this.showMessage(errorMessage, true);
               }
             );
-          this.showMessage('Modification effectuée!', false);
+
+          this.mouvementService.ajouterMouvement(lignemouvement).subscribe(
+            () => {},
+            (error) => {
+              const errorMessage =
+                error.error.message ||
+                'Failed to Add This Delivery in Mouvement Table. Please try again later.';
+              this.showMessage(errorMessage, true);
+            }
+          );
+
+          this.showMessage('Validation de '+ lv.livraison.codeLiv +' effectuée!', false);
           this.chargerLigneLivraison();
           this.router.navigate(['/lignelivraison']);
         },

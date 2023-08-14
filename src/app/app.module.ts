@@ -22,6 +22,9 @@ import { EditLigneCommandeComponent } from './edit-ligne-commande/edit-ligne-com
 import { ListLigneLivraisonComponent } from './list-ligne-livraison/list-ligne-livraison.component';
 import { AddLigneLivraisonComponent } from './add-ligne-livraison/add-ligne-livraison.component';
 import { EditLigneLivraisonComponent } from './edit-ligne-livraison/edit-ligne-livraison.component';
+import { ListSortieComponent } from './list-sortie/list-sortie.component';
+import { AddSortieComponent } from './add-sortie/add-sortie.component';
+import { EditSortieComponent } from './edit-sortie/edit-sortie.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { EditLigneLivraisonComponent } from './edit-ligne-livraison/edit-ligne-l
     ListLigneLivraisonComponent,
     AddLigneLivraisonComponent,
     EditLigneLivraisonComponent,
+    ListSortieComponent,
+    AddSortieComponent,
+    EditSortieComponent,
   ],
   imports: [
     BrowserModule,

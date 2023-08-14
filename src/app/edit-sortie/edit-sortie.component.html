@@ -1,0 +1,82 @@
+<ng-container *ngIf="message">
+    <div class="alert alert-dismissible fade show text-left message col-md-4 ml-auto"
+        [ngClass]="{'alert-success': !isError, 'alert-danger': isError}" role="alert">
+        {{ message }}
+        <button type="button" class="close btn-sm" (click)="message = null" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+</ng-container>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Sortie Fourniture</h1>
+    <a routerLink="/sortie" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <i class="fas fa-plus fa-sm text-white-50"></i> Liste Sortie Fourniture</a>
+</div>
+
+<!-- Basic Card Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Modification de Sortie Fourniture</h6>
+    </div>
+    <div class="card-body">
+        <form autocomplete="off">
+
+            <input type="hidden" class="form-control" name="id" [(ngModel)]="currentSortie.id">
+
+            <!-- <input type="hidden" class="form-control" name="dateModification"
+                [value]="currentFourniture.dateModification" [(ngModel)]="currentFourniture.dateModification"> -->
+
+            <div class="form-row">
+
+                <div class="form-group col-md-2">
+                    <label for="inputEmail4">Code Sortie</label>
+                    <input type="text" readonly class="form-control" name="codeSort"
+                        [(ngModel)]="currentSortie.codeSort" id="inputEmail4" placeholder="Code Sortie">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputPassword6">Date Sortie</label>
+                    <input type="date" class="form-control" name="dateSort" required
+                        [(ngModel)]="currentSortie.dateSort" id="inputPassword6" placeholder="Date Sortie">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputPassword6">Qte Retirée</label>
+                    <input type="number" class="form-control" name="qteSort" required
+                        [(ngModel)]="currentSortie.qteSort" id="inputPassword6" placeholder="Quantité Retirée">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputState8">Employe</label>
+                    <select class="form-control" name="updatedEmpId" [(ngModel)]="updatedEmpId">
+                        <option selected value="">Choisir un.e employe.e</option>
+                        <option *ngFor="let em of employes" [value]="em.id">
+                            {{em.nomEmp}} - {{em.prenomEmp}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputState8">Fourniture</label>
+                    <select class="form-control" name="updatedFourId" [(ngModel)]="updatedFourId">
+                        <option selected value="">Choisir un fourniture</option>
+                        <option *ngFor="let fo of fournitures" [value]="fo.id">
+                            {{fo.nomFour}} - {{fo.mesureFour}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputPassword6">Statut Sortie Fourniture</label>
+                    <input type="text" class="form-control" name="etatSort" required
+                        [(ngModel)]="currentSortie.etatSort" id="inputPassword6" placeholder="Etat Sortie Fourniture">
+                </div>
+            </div>
+            
+
+            <div class="col text-right">
+                <button type="reset" class="btn btn-warning">Annuler</button>
+                <button type="submit" (click)="updateSortie()" style="margin-left: 5px;"
+                    class="btn btn-primary">Modifier</button>
+            </div>
+
+        </form>
+    </div>
+</div>

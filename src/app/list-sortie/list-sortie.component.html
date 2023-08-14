@@ -1,0 +1,63 @@
+<ng-container *ngIf="message">
+    <div class="alert alert-dismissible fade show text-left message col-md-4 ml-auto"
+        [ngClass]="{'alert-success': !isError, 'alert-danger': isError}" role="alert">
+        {{ message }}
+        <button type="button" class="close btn-sm" (click)="message = null" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+</ng-container>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Sortie Fourniture</h1>
+
+    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" routerLink="add_sortie">
+        <i class="fas fa-plus fa-sm text-white-50"></i> Ajouter</a>
+</div>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Liste Sortie Fourniture</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive table-wrapper">
+            <table id="dataTable" class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ref Sortie</th>
+                        <th>Date Sortie</th>
+                        <th>Employe</th>
+                        <th>Fourniture</th>
+                        <th>Qte Retirée</th>
+                        <th>Statut</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let sortie of sorties; let i = index;">
+                        <td>{{i + 1}}</td>
+                        <td>{{sortie.codeSort}}</td>
+                        <td>{{sortie.dateSort}}</td>
+                        <td>{{sortie.employe?.nomEmp}} - {{sortie.employe?.prenomEmp}}</td>
+                        <td>{{sortie.fourniture?.nomFour}} {{sortie.fourniture?.mesureFour}}</td>
+                        <td>{{sortie.qteSort }}</td>
+                        <td>{{sortie.etatSort}}</td>
+                        <td>
+                            <a [routerLink]="['/sortie/edit_sortie', sortie.id]"
+                                class="btn btn-info btn-circle btn-sm">
+                                <i class="fas fa-pen" data-toggle="tooltip" data-placement="top" title="Modifier une sortie"></i>
+                            </a>
+                            <a (click)="supprimerSortie(sortie)"
+                                class="btn btn-danger btn-circle btn-sm" style="margin-left: 5px;">
+                                <i class="fas fa-ban" data-toggle="tooltip" data-placement="top" title="Désactiver une sortie"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
