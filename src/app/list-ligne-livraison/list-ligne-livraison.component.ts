@@ -79,11 +79,6 @@ export class ListLigneLivraisonComponent {
       const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
       const year = currentDate.getFullYear().toString();
       const date_code = `${year}-${month}-${day}`;
-      this.mouvement.datemouv = date_code;
-      this.mouvement.qteMouv = lv.qteLivraison;
-      this.mouvement.natureMouv = 'IN';
-      this.mouvement.fourniture = lv.fourniture.id;
-      this.mouvement.lignelivraison = lv.id;
 
       const lignemouvement = {
         id: null,

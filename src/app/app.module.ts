@@ -25,6 +25,10 @@ import { EditLigneLivraisonComponent } from './edit-ligne-livraison/edit-ligne-l
 import { ListSortieComponent } from './list-sortie/list-sortie.component';
 import { AddSortieComponent } from './add-sortie/add-sortie.component';
 import { EditSortieComponent } from './edit-sortie/edit-sortie.component';
+import { ListMouvementComponent } from './list-mouvement/list-mouvement.component';
+import { EtatCommandeComponent } from './etat-commande/etat-commande.component';
+import { EtatLivraisonComponent } from './etat-livraison/etat-livraison.component';
+import { EtatSortieComponent } from './etat-sortie/etat-sortie.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +54,10 @@ import { EditSortieComponent } from './edit-sortie/edit-sortie.component';
     ListSortieComponent,
     AddSortieComponent,
     EditSortieComponent,
+    ListMouvementComponent,
+    EtatCommandeComponent,
+    EtatLivraisonComponent,
+    EtatSortieComponent,
   ],
   imports: [
     BrowserModule,

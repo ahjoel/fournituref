@@ -60,7 +60,7 @@
 
             <div class="col text-right">
                 <button type="reset" class="btn btn-warning">Annuler</button>
-                <button type="submit" (click)="updateLigneLivraison()" style="margin-left: 5px;"
+                <button type="submit" (click)="updateLigneLivraison()" style="margin-left: 5px;" [disabled]="currentLigneLivraison.etatLivraison === 'VA'"
                     class="btn btn-primary">Modifier</button>
             </div>
 

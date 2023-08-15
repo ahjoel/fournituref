@@ -11,6 +11,6 @@ export class Mouvement {
   natureMouv!: string;
   fourniture!: Fourniture|any;
   lignelivraison!: Lignelivraison|any;
-  sortie!: Sortie;
+  sortie!: Sortie|any;
   etatMouv!: string;
 }

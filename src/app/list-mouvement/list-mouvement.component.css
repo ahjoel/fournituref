@@ -1,0 +1,15 @@
+.excel-button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  /* Ajustez le padding pour un bouton plus petit */
+  border-radius: 3px;
+  /* Utilisez un bord plus arrondi pour un look plus moderne */
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.excel-button:hover {
+  background-color: #2980b9;
+}

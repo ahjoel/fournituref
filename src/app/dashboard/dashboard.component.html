@@ -85,8 +85,8 @@
             </li>
             
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item" routerLinkActive="active" [class.active]="router.isActive('/situation', true)">
+                <a class="nav-link" routerLink="/situation">
                     <i class="far fa-arrow-alt-circle-right"></i>
                     <i class="far fa-arrow-alt-circle-left"></i>
                     <span>Situation stock</span>
@@ -144,24 +144,24 @@
             </li> -->
 
             <!-- Nav Item -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item" routerLinkActive="active" [class.active]="router.isActive('/etatcommande', true)">
+                <a class="nav-link" routerLink="/etatcommande">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Etats Livraison</span></a>
+                    <span>Etats Commande</span></a>
             </li>
             
             <!-- Nav Item -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item" routerLinkActive="active" [class.active]="router.isActive('/etatlivraison', true)">
+                <a class="nav-link" routerLink="/etatlivraison">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Etats Sortie</span></a>
+                    <span>Etats Livraison</span></a>
             </li>
 
             <!-- Nav Item -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item" routerLinkActive="active" [class.active]="router.isActive('/etatsortie', true)">
+                <a class="nav-link" routerLink="/etatsortie">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Etats Livraison-Sortie</span></a>
+                    <span>Etats Sortie</span></a>
             </li>
             
             <!-- Nav Item -->
@@ -213,11 +213,11 @@
             </div>
 
             <!-- Sidebar Message -->
-            <!-- <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div> -->
+            <div class="sidebar-card d-none d-lg-flex">
+                <img class="sidebar-card-illustration mb-2" src="../../assets/images/undraw_rocket.svg" alt="...">
+                <p class="text-center mb-2"><strong>STOCK-FB Pro</strong> contient la partie inventaire des articles du stock et bien d'autres états plus riche en analyse de données</p>
+                <a class="btn btn-success btn-sm" target="_blank" href="https://www.linkedin.com/in/jo%C3%ABl-aholou-1171a5174/">Rentrons en contact!</a>
+            </div>
 
         </ul>
         <!-- End of Sidebar -->

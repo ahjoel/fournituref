@@ -7,6 +7,6 @@ export class Sortie {
   dateSort!: Date|string;
   qteSort!: number;
   etatSort!: string;
-  fourniture!: Fourniture;
+  fourniture!: Fourniture|any;
   employe!: Employe;
 }

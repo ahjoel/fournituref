@@ -35,4 +35,29 @@ export class MouvementService {
     const url = `${apiURLMouv}/delete/${id}`;
     return this.http.delete(url, httpOptions);
   }
+
+  quantiteFournitureDispo(id: number): Observable<number>{
+    const url = `${apiURLMouv}/fourniture/${id}`;
+    return this.http.get<number>(url, httpOptions);
+  }
+
+  quantiteCommandeNonLivree(): Observable<number>{
+    const url = `${apiURLMouv}/commandenonliv`;
+    return this.http.get<number>(url, httpOptions);
+  }
+
+  quantiteCommandeLivree(): Observable<number>{
+    const url = `${apiURLMouv}/commandeliv`;
+    return this.http.get<number>(url, httpOptions);
+  }
+
+  quantiteFournitureLivraison(): Observable<number>{
+    const url = `${apiURLMouv}/fournitureliv`;
+    return this.http.get<number>(url, httpOptions);
+  }
+
+  quantiteFournitureSortie(): Observable<number>{
+    const url = `${apiURLMouv}/fournituresort`;
+    return this.http.get<number>(url, httpOptions);
+  }
 }

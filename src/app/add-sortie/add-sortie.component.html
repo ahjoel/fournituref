@@ -21,7 +21,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Enregistrement de Sortie Fourniture</h6>
     </div>
     <div class="card-body">
-        <form autocomplete="off">
+        <form autocomplete="off" #form_livraison="ngForm">
 
             <input type="hidden" class="form-control" name="etatFour" [value]="newSortie.etatSort"
                 [(ngModel)]="newSortie.etatSort">
@@ -31,16 +31,6 @@
                     <label for="inputEmail4">Code Sortie</label>
                     <input type="text" readonly class="form-control" name="codeSort"
                         [(ngModel)]="newSortie.codeSort" id="inputEmail4" placeholder="Code Sortie">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="inputPassword6">Date Sortie</label>
-                    <input type="date" class="form-control" name="dateSort" required [(ngModel)]="newSortie.dateSort"
-                        id="inputPassword6" placeholder="Date Sortie">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="inputPassword6">Qte Retirée</label>
-                    <input type="number" class="form-control" name="qteSort" required [(ngModel)]="newSortie.qteSort"
-                        id="inputPassword6" placeholder="Quantité Retirée">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="inputState8">Employe</label>
@@ -53,18 +43,29 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label for="inputState8">Fourniture</label>
-                    <select class="form-control" name="newIdFour" [(ngModel)]="newIdFour">
+                    <select class="form-control" name="newIdFour" [(ngModel)]="newIdFour" (change)="onChangeFourniture()">
                         <option selected value="">Choisir un fourniture</option>
                         <option *ngFor="let fo of fournitures" [value]="fo.id">
                             {{fo.nomFour}} - {{fo.mesureFour}}
                         </option>
                     </select>
+                    <span *ngIf="qteDispo" style="color: brown;">Quantité dispo : {{qteDispo}}</span>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputPassword6">Date Sortie</label>
+                    <input type="date" class="form-control" name="dateSort" required [(ngModel)]="newSortie.dateSort"
+                        id="inputPassword6" placeholder="Date Sortie">
+                </div>
+                <div class="form-group col-md-2" *ngIf="qteDispo>0">
+                    <label for="inputPassword6">Qte Retirée</label>
+                    <input type="number" class="form-control" name="qteSort" *ngIf="qteDispo>0" required [(ngModel)]="newSortie.qteSort"
+                        id="inputPassword6" placeholder="Quantité Retirée">
                 </div>
             </div>
 
             <div class="col text-right">
                 <button type="reset" class="btn btn-warning">Annuler</button>
-                <button type="submit" (click)="addSortie()" style="margin-left: 5px;"
+                <button type="submit" (click)="addSortie()" [disabled]="form_livraison.invalid || newSortie.qteSort>qteDispo" style="margin-left: 5px;"
                     class="btn btn-primary">Enregistrer</button>
             </div>
 

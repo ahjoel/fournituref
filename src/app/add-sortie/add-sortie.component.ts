@@ -6,6 +6,7 @@ import { SortieService } from '../service/sortie.service';
 import { EmployeService } from '../service/employe.service';
 import { Router } from '@angular/router';
 import { FournitureService } from '../service/fourniture.service';
+import { MouvementService } from '../service/mouvement.service';
 
 @Component({
   selector: 'app-add-sortie',
@@ -19,11 +20,13 @@ export class AddSortieComponent {
   newIdEmp!: number;
   newIdFour!: number;
   newEmploye!: Employe;
+  qteDispo!: number;
   message: string | null = null;
   isError: boolean = false;
 
   constructor(
     private sortieService: SortieService,
+    private mouvementService: MouvementService,
     private employeService: EmployeService,
     private fournitureService: FournitureService,
     private router: Router
@@ -41,6 +44,7 @@ export class AddSortieComponent {
     this.newSortie.etatSort = "NON-VA";
 
     this.getNewCodeSortie();
+
   }
 
   getNewCodeSortie() {
@@ -53,6 +57,14 @@ export class AddSortieComponent {
       this.newSortie.codeSort = date_code + (res.length + 1);
     });
   }
+
+    onChangeFourniture() {
+      this.mouvementService
+        .quantiteFournitureDispo(this.newIdFour)
+        .subscribe((quantite:number) => {
+          this.qteDispo = quantite;
+        });
+    }
 
   addSortie() {
 
@@ -73,6 +85,7 @@ export class AddSortieComponent {
         this.newSortie = new Sortie();
         this.newIdEmp = null;
         this.newIdFour = null;
+        this.qteDispo = null;
         this.getNewCodeSortie();
         this.router.navigate(['/sortie/add_sortie']);
       },

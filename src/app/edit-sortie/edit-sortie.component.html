@@ -37,17 +37,17 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputPassword6">Date Sortie</label>
-                    <input type="date" class="form-control" name="dateSort" required
+                    <input type="date" [readonly]="currentSortie.etatSort === 'VA'" class="form-control" name="dateSort" required
                         [(ngModel)]="currentSortie.dateSort" id="inputPassword6" placeholder="Date Sortie">
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputPassword6">Qte Retirée</label>
-                    <input type="number" class="form-control" name="qteSort" required
+                    <input type="number" [readonly]="currentSortie.etatSort === 'VA'" class="form-control" name="qteSort" required
                         [(ngModel)]="currentSortie.qteSort" id="inputPassword6" placeholder="Quantité Retirée">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="inputState8">Employe</label>
-                    <select class="form-control" name="updatedEmpId" [(ngModel)]="updatedEmpId">
+                    <select class="form-control" name="updatedEmpId" [(ngModel)]="updatedEmpId" [disabled]="currentSortie.etatSort === 'VA'">
                         <option selected value="">Choisir un.e employe.e</option>
                         <option *ngFor="let em of employes" [value]="em.id">
                             {{em.nomEmp}} - {{em.prenomEmp}}
@@ -56,7 +56,7 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label for="inputState8">Fourniture</label>
-                    <select class="form-control" name="updatedFourId" [(ngModel)]="updatedFourId">
+                    <select class="form-control" name="updatedFourId" [(ngModel)]="updatedFourId" [disabled]="currentSortie.etatSort === 'VA'">
                         <option selected value="">Choisir un fourniture</option>
                         <option *ngFor="let fo of fournitures" [value]="fo.id">
                             {{fo.nomFour}} - {{fo.mesureFour}}
@@ -65,7 +65,7 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputPassword6">Statut Sortie Fourniture</label>
-                    <input type="text" class="form-control" name="etatSort" required
+                    <input type="text" class="form-control" name="etatSort" required [readonly]="currentSortie.etatSort === 'VA'"
                         [(ngModel)]="currentSortie.etatSort" id="inputPassword6" placeholder="Etat Sortie Fourniture">
                 </div>
             </div>
@@ -73,7 +73,7 @@
 
             <div class="col text-right">
                 <button type="reset" class="btn btn-warning">Annuler</button>
-                <button type="submit" (click)="updateSortie()" style="margin-left: 5px;"
+                <button type="submit" (click)="updateSortie()" style="margin-left: 5px;" [disabled]="currentSortie.etatSort === 'VA'"
                     class="btn btn-primary">Modifier</button>
             </div>
 

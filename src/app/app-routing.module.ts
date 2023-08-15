@@ -19,6 +19,10 @@ import { EditLigneLivraisonComponent } from './edit-ligne-livraison/edit-ligne-l
 import { AddSortieComponent } from './add-sortie/add-sortie.component';
 import { ListSortieComponent } from './list-sortie/list-sortie.component';
 import { EditSortieComponent } from './edit-sortie/edit-sortie.component';
+import { ListMouvementComponent } from './list-mouvement/list-mouvement.component';
+import { EtatCommandeComponent } from './etat-commande/etat-commande.component';
+import { EtatLivraisonComponent } from './etat-livraison/etat-livraison.component';
+import { EtatSortieComponent } from './etat-sortie/etat-sortie.component';
 
 const routes: Routes = [
   {path: "*", component: DashboardComponent},
@@ -40,6 +44,10 @@ const routes: Routes = [
   {path: "sortie", component: ListSortieComponent},
   {path: "sortie/add_sortie", component: AddSortieComponent},
   {path: "sortie/edit_sortie/:id", component: EditSortieComponent},
+  {path: "situation", component: ListMouvementComponent},
+  {path: "etatcommande", component: EtatCommandeComponent},
+  {path: "etatlivraison", component: EtatLivraisonComponent},
+  {path: "etatsortie", component: EtatSortieComponent},
 ];
 
 @NgModule({
