@@ -23,6 +23,7 @@ import { ListMouvementComponent } from './list-mouvement/list-mouvement.componen
 import { EtatCommandeComponent } from './etat-commande/etat-commande.component';
 import { EtatLivraisonComponent } from './etat-livraison/etat-livraison.component';
 import { EtatSortieComponent } from './etat-sortie/etat-sortie.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: "*", component: DashboardComponent},
@@ -48,6 +49,7 @@ const routes: Routes = [
   {path: "etatcommande", component: EtatCommandeComponent},
   {path: "etatlivraison", component: EtatLivraisonComponent},
   {path: "etatsortie", component: EtatSortieComponent},
+  {path: "login", component: LoginComponent},
 ];
 
 @NgModule({

@@ -54,10 +54,12 @@
                                 class="btn btn-danger btn-circle btn-sm" style="margin-left: 5px;">
                                 <i class="fas fa-ban" data-toggle="tooltip" data-placement="top" title="Désactiver une sortie"></i>
                             </a>
-                            <a (click)="validerSortie(sortie)" *ngIf="sortie.etatSort === 'NON-VA'"
-                                class="btn btn-success btn-circle btn-sm" style="margin-left: 5px;">
-                                <i class="fas fa-check" data-toggle="tooltip" data-placement="top" title="Valider une livraison"></i>
-                            </a>
+                            <span *ngIf="authService.isAdmin()">
+                                <a (click)="validerSortie(sortie)" *ngIf="sortie.etatSort === 'NON-VA'"
+                                    class="btn btn-success btn-circle btn-sm" style="margin-left: 5px;">
+                                    <i class="fas fa-check" data-toggle="tooltip" data-placement="top" title="Valider une livraison"></i>
+                                </a>
+                            </span>
                         </td>
                     </tr>
                 </tbody>

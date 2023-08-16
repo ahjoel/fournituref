@@ -7,6 +7,7 @@ import { LignecommandeService } from '../service/lignecommande.service';
 import { Lignecommande } from '../model/lignecommande.model';
 import { Mouvement } from '../model/mouvement.model';
 import { MouvementService } from '../service/mouvement.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-list-ligne-livraison',
@@ -23,6 +24,7 @@ export class ListLigneLivraisonComponent {
 
   constructor(
     private ligneLivraisonService: LignelivraisonService,
+    public authService: AuthService,
     private mouvementService: MouvementService,
     private lignecommandeService: LignecommandeService,
     private router: Router

@@ -11,7 +11,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-dice-d6"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Stock-FB<sup></sup></div>
+                <div class="sidebar-brand-text mx-3">GESTOCK-FB<sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -264,15 +264,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Voudriez-vous quitter la session?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Cliquez sur Déconnexion pour fermer cette session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary"  data-dismiss="modal">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                    <a class="btn btn-primary" (click)="onLogout()" data-dismiss="modal">Déconnexion</a>
                 </div>
             </div>
         </div>

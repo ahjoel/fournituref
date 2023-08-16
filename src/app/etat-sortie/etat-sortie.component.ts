@@ -56,6 +56,10 @@ export class EtatSortieComponent {
     XLSX.writeFile(wb, this.fileName);
   }
 
+  printData():void{
+    window.print();
+  }
+
   chargerSorties() {
     this.sortieService.listeSortie().subscribe(
       (sorts) => {

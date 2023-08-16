@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //import * as $ from 'jquery';
 import 'datatables.net';
+import { AuthService } from './service/auth.service';
 declare var $: any; 
 
 @Component({
@@ -11,7 +12,7 @@ declare var $: any;
 })
 export class AppComponent implements OnInit{
 
-  constructor(public router: Router){}
+  constructor(public authService: AuthService, public router: Router){}
   
   ngOnInit() {
     (() => {
@@ -65,6 +66,22 @@ export class AppComponent implements OnInit{
       //   e.preventDefault();
       // });
     })();
+
+    let isloggedin: string;
+    let loggedUser: string;
+
+    isloggedin = localStorage.getItem('isloggedIn');
+    loggedUser = localStorage.getItem('loggedUser');
+    
+    if (isloggedin != 'true' || !loggedUser) {
+      this.router.navigate(['/login']);
+    } else {
+      this.authService.setLoggedUserFromLocalStorage(loggedUser);
+    }
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
   
 }

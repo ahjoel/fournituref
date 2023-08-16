@@ -3,6 +3,7 @@ import { Sortie } from '../model/sortie.model';
 import { SortieService } from '../service/sortie.service';
 import { Router } from '@angular/router';
 import { MouvementService } from '../service/mouvement.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-list-sortie',
@@ -18,6 +19,7 @@ export class ListSortieComponent {
   constructor(
     private sortieService: SortieService,
     private mouvementService: MouvementService,
+    public authService: AuthService,
     private router: Router
   ) {}
 

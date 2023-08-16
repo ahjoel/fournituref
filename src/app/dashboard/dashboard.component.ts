@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,8 +14,9 @@ export class DashboardComponent {
       behavior: 'smooth'
     });
   }
-  constructor(public router: Router){}
+  constructor(public authService: AuthService, public router: Router){}
 
-
-
+  onLogout() {
+    this.authService.logout();
+  }
 }

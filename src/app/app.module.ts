@@ -29,6 +29,7 @@ import { ListMouvementComponent } from './list-mouvement/list-mouvement.componen
 import { EtatCommandeComponent } from './etat-commande/etat-commande.component';
 import { EtatLivraisonComponent } from './etat-livraison/etat-livraison.component';
 import { EtatSortieComponent } from './etat-sortie/etat-sortie.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { EtatSortieComponent } from './etat-sortie/etat-sortie.component';
     EtatCommandeComponent,
     EtatLivraisonComponent,
     EtatSortieComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
