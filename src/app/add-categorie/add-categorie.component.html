@@ -21,7 +21,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Enregistrement de Categorie</h6>
     </div>
     <div class="card-body">
-        <form>
+        <form #formCategorie="ngForm">
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <label for="inputEmail4">Code Categorie</label>
@@ -42,7 +42,7 @@
 
             <div class="col text-right">
                 <button type="reset" class="btn btn-warning">Annuler</button>
-                <button type="submit" (click)="addCategorie()" style="margin-left: 5px;" class="btn btn-primary">Enregistrer</button>
+                <button type="submit" [disabled]="formCategorie.invalid" (click)="addCategorie()" style="margin-left: 5px;" class="btn btn-primary">Enregistrer</button>
             </div>
         </form>
     </div>
