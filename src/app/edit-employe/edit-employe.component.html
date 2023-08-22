@@ -21,7 +21,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Modification Employe</h6>
     </div>
     <div class="card-body">
-        <form>
+        <form #formEmploye="ngForm">
             <div class="form-row">
                 <input type="hidden" class="form-control" name="etat" [(ngModel)]="currentEmploye.etat">
                 <div class="form-group col-md-6">
@@ -54,7 +54,7 @@
 
             <div class="col text-right">
                 <button type="reset" class="btn btn-warning">Annuler</button>
-                <button type="submit" (click)="updateEmploye()" style="margin-left: 5px;" class="btn btn-primary">Modifier</button>
+                <button type="submit" [disabled]="formEmploye.invalid" (click)="updateEmploye()" style="margin-left: 5px;" class="btn btn-primary">Modifier</button>
             </div>
         </form>
     </div>
