@@ -75,6 +75,7 @@ export class AddSortieComponent {
     this.newSortie.employe = this.employes.find(
       (e) => e.id == this.newIdEmp
     )!;
+    this.newSortie.etatSort = "NON-VA";
     
     this.sortieService.ajouterSortie(this.newSortie).subscribe(
       () => {

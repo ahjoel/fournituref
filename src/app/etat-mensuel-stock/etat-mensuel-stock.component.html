@@ -1,0 +1,67 @@
+<ng-container *ngIf="message">
+    <div class="alert alert-dismissible fade show text-left message col-md-4 ml-auto"
+        [ngClass]="{'alert-success': !isError, 'alert-danger': isError}" role="alert">
+        {{ message }}
+        <button type="button" class="close btn-sm" (click)="message = null" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+</ng-container>
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Etat Mensuel Stock</h1>
+
+</div>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+        <h6 class="m-0 font-weight-bold text-primary">Etat Mensuel Stock Fourniture</h6>
+
+        <button (click)="exportexcel()" class="excel-button">Export Excel</button>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive table-wrapper">
+            <form (submit)="chargerSituation()">
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="inputPassword6">Date debut</label>
+                        <input type="date" class="form-control" name="datedeb" required [(ngModel)]="datedeb"
+                            id="inputPassword6">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputPassword5">Date fin</label>
+                        <input type="date" class="form-control" name="datefin" required [(ngModel)]="datefin"
+                            id="inputPassword5">
+                    </div>
+                    <div><br>
+                        <input type="submit" value="Rechercher" style="margin-top: 8px;"  class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+            <table id="dataTable" class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Fourniture</th>
+                        <th>Qte Initiale</th>
+                        <th>Qte Entrée</th>
+                        <th>Qte Sortie</th>
+                        <th>Solde</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let situtation of data; let i = index;">
+                        <td>{{i + 1}}</td>
+                        <td>{{situtation[1]}}</td>
+                        <td>{{situtation[2]}}</td>
+                        <td>{{situtation[3]}}</td>
+                        <td>{{situtation[4]}}</td>
+                        <td>{{situtation[5]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

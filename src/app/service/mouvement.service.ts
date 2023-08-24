@@ -60,4 +60,8 @@ export class MouvementService {
     const url = `${apiURLMouv}/fournituresort`;
     return this.http.get<number>(url, httpOptions);
   }
+
+  getSituationPeriodeStock(deb:Date, fin:Date): Observable<any[]> {
+    return this.http.get<any[]>(`${apiURLMouv}/periode/${deb}/${fin}`);
+  }
 }

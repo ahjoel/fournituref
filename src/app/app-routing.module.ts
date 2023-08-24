@@ -24,6 +24,7 @@ import { EtatCommandeComponent } from './etat-commande/etat-commande.component';
 import { EtatLivraisonComponent } from './etat-livraison/etat-livraison.component';
 import { EtatSortieComponent } from './etat-sortie/etat-sortie.component';
 import { LoginComponent } from './login/login.component';
+import { EtatMensuelStockComponent } from './etat-mensuel-stock/etat-mensuel-stock.component';
 
 const routes: Routes = [
   {path: "*", component: DashboardComponent},
@@ -49,6 +50,7 @@ const routes: Routes = [
   {path: "etatcommande", component: EtatCommandeComponent},
   {path: "etatlivraison", component: EtatLivraisonComponent},
   {path: "etatsortie", component: EtatSortieComponent},
+  {path: "etatmensuel", component: EtatMensuelStockComponent},
   {path: "login", component: LoginComponent},
 ];
 

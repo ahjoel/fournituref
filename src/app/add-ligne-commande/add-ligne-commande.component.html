@@ -54,7 +54,7 @@
                 <form #form="ngForm">
                     <div class="form-group">
                       <label>Fourniture</label>
-                      <select #fourniture="ngModel" name="fourniture" required [(ngModel)]="ligneCommandeObjet.fourniture" class="form-control">
+                      <select #fourniture="ngModel" name="fourniture" required [(ngModel)]="ligneCommandeObjet.fourniture" class="selectpicker form-control" data-live-search="true">
                         <option selected value="">Choisir une fourniture</option>
                         <option *ngFor="let fourniture of fournitures" [value]="fourniture.id">{{fourniture.codeFour}} {{fourniture.nomFour}} - {{fourniture.mesureFour}}</option>
                       </select>
