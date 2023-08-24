@@ -21,7 +21,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Modification de Fourniture</h6>
     </div>
     <div class="card-body">
-        <form autocomplete="off">
+        <form autocomplete="off" #formFourniture="ngForm">
 
             <input type="hidden" class="form-control" name="id"
                 [(ngModel)]="currentFourniture.id">
@@ -72,7 +72,7 @@
 
             <div class="col text-right">
                 <button type="reset" class="btn btn-warning">Annuler</button>
-                <button type="submit" (click)="updateFourniture()" style="margin-left: 5px;"
+                <button type="submit" [disabled]="formFourniture.invalid" (click)="updateFourniture()" style="margin-left: 5px;"
                     class="btn btn-primary">Modifier</button>
             </div>
 
