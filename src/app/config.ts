@@ -1,27 +1,29 @@
-export const apiURLCatList: string = 'http://localhost:8080/api/categories';
-export const apiURLCat: string = 'http://localhost:8080/api/categorie';
+import { environment } from "src/environments/environment";
 
-export const apiURLEmpList: string = 'http://localhost:8080/api/employes';
-export const apiURLEmp: string = 'http://localhost:8080/api/employe';
+export const apiURLCatList: string = `${environment.apiBaseUrl}/api/categories`;
+export const apiURLCat: string = `${environment.apiBaseUrl}/api/categorie`;
 
-export const apiURLFourList: string = 'http://localhost:8080/api/fournitures';
-export const apiURLFour: string = 'http://localhost:8080/api/fourniture';
+export const apiURLEmpList: string = `${environment.apiBaseUrl}/api/employes`;
+export const apiURLEmp: string = `${environment.apiBaseUrl}/api/employe`;
 
-export const apiURLlComList: string = 'http://localhost:8080/api/lignecommandes';
-export const apiURLlCom: string = 'http://localhost:8080/api/lignecommande';
+export const apiURLFourList: string = `${environment.apiBaseUrl}/api/fournitures`;
+export const apiURLFour: string = `${environment.apiBaseUrl}/api/fourniture`;
 
-export const apiURLComList: string = 'http://localhost:8080/api/commandes';
-export const apiURLCom: string = 'http://localhost:8080/api/commande';
+export const apiURLlComList: string = `${environment.apiBaseUrl}/api/lignecommandes`;
+export const apiURLlCom: string = `${environment.apiBaseUrl}/api/lignecommande`;
 
-export const apiURLLivList: string = 'http://localhost:8080/api/livraisons';
-export const apiURLLiv: string = 'http://localhost:8080/api/livraison';
+export const apiURLComList: string = `${environment.apiBaseUrl}/api/commandes`;
+export const apiURLCom: string = `${environment.apiBaseUrl}/api/commande`;
 
-export const apiURLLcomNonLivree: string = 'http://localhost:8080/api/lignecommandes/nonlivree';
-export const apiURLlLivList: string = 'http://localhost:8080/api/lignelivraisons';
-export const apiURLlLiv: string = 'http://localhost:8080/api/lignelivraison';
+export const apiURLLivList: string = `${environment.apiBaseUrl}/api/livraisons`;
+export const apiURLLiv: string = `${environment.apiBaseUrl}/api/livraison`;
 
-export const apiURLSortList: string = 'http://localhost:8080/api/sorties';
-export const apiURLSort: string = 'http://localhost:8080/api/sortie';
+export const apiURLLcomNonLivree: string = `${environment.apiBaseUrl}/api/lignecommandes/nonlivree`;
+export const apiURLlLivList: string = `${environment.apiBaseUrl}/api/lignelivraisons`;
+export const apiURLlLiv: string = `${environment.apiBaseUrl}/api/lignelivraison`;
 
-export const apiURLMouvList: string = 'http://localhost:8080/api/mouvements';
-export const apiURLMouv: string = 'http://localhost:8080/api/mouvement';
+export const apiURLSortList: string = `${environment.apiBaseUrl}/api/sorties`;
+export const apiURLSort: string = `${environment.apiBaseUrl}/api/sortie`;
+
+export const apiURLMouvList: string = `${environment.apiBaseUrl}/api/mouvements`;
+export const apiURLMouv: string = `${environment.apiBaseUrl}/api/mouvement`;
