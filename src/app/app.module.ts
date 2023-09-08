@@ -31,6 +31,7 @@ import { EtatLivraisonComponent } from './etat-livraison/etat-livraison.componen
 import { EtatSortieComponent } from './etat-sortie/etat-sortie.component';
 import { LoginComponent } from './login/login.component';
 import { EtatMensuelStockComponent } from './etat-mensuel-stock/etat-mensuel-stock.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { EtatMensuelStockComponent } from './etat-mensuel-stock/etat-mensuel-sto
     EtatSortieComponent,
     LoginComponent,
     EtatMensuelStockComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

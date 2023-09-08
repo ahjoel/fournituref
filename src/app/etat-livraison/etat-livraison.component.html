@@ -43,7 +43,7 @@
                         <td>{{lignelivraison.lignecommande?.commande.codeCom}}</td>
                         <td>{{lignelivraison.livraison?.codeLiv}}</td>
                         <td>{{lignelivraison.livraison?.fournisseurLiv}}</td>
-                        <td>{{lignelivraison.livraison?.dateLiv}}</td>
+                        <td>{{lignelivraison.livraison?.dateLiv|date:'dd/MM/yyyy'}}</td>
                         <td>{{lignelivraison.fourniture?.nomFour}} - {{lignelivraison.fourniture?.mesureFour}}</td>
                         <td>{{lignelivraison.qteLivraison}}</td>
                         <td>{{lignelivraison.prixLivraison}}</td>

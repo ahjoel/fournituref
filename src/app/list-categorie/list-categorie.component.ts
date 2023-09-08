@@ -12,6 +12,7 @@ export class ListCategorieComponent {
   categories: Categorie[];
   message: string | null = null; 
   isError: boolean = false;
+  isLoading = true;
 
   constructor(private categorieService: CategorieService, private router : Router,) {}
 
@@ -22,23 +23,34 @@ export class ListCategorieComponent {
 
   //Initialisation des données avec Datatable
   ngAfterViewInit() {
-    this.categorieService.listeCategorie().subscribe((cats) => {
-      //console.log(cats);
-      this.categories = cats;
-      $('#dataTable').DataTable();
-    });
+    setTimeout(() => {
+      this.categorieService.listeCategorie().subscribe((cats) => {
+        //console.log(cats);
+        this.isLoading = false;
+        this.categories = cats;
+        setTimeout(() => {
+          $('#dataTable').DataTable({
+            paging: true, // Active la pagination
+            pageLength: 10, // Nombre de lignes par page
+          });
+        }, 0); 
+      });
+    }, 5000);
   }
 
   chargerCategories() {
-    this.categorieService.listeCategorie().subscribe(
-      (cats) => {
-        this.categories = cats;
-      },
-      (error) => {
-        const errorMessage = error.error.message || 'Failed to load categories. Please try again later.';
-        this.showMessage(errorMessage, true);
-      }
-    );
+    setTimeout(() => {
+      this.categorieService.listeCategorie().subscribe(
+        (cats) => {
+          this.isLoading = false;
+          this.categories = cats;
+        },
+        (error) => {
+          const errorMessage = error.error.message || 'Failed to load categories. Please try again later.';
+          this.showMessage(errorMessage, true);
+        }
+      );
+    }, 5000);
   }
 
   supprimerCategorie(c: Categorie) {

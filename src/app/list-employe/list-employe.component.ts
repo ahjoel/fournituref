@@ -12,6 +12,7 @@ export class ListEmployeComponent {
   employes: Employe[];
   message: string | null = null;
   isError: boolean = false;
+  isLoading = true;
 
   constructor(private employeService: EmployeService, private router: Router) {}
 
@@ -21,24 +22,35 @@ export class ListEmployeComponent {
 
   //Initialisation des données avec Datatable
   ngAfterViewInit() {
-    this.employeService.listeEmploye().subscribe((emps) => {
-      this.employes = emps;
-      $('#dataTable').DataTable();
-    });
+    setTimeout(() => {
+      this.employeService.listeEmploye().subscribe((emps) => {
+        this.isLoading = false;
+        this.employes = emps;
+        setTimeout(() => {
+          $('#dataTable').DataTable({
+            paging: true, // Active la pagination
+            pageLength: 10, // Nombre de lignes par page
+          });
+        }, 0); 
+      });
+    }, 5000);
   }
 
   chargerEmployes() {
-    this.employeService.listeEmploye().subscribe(
-      (emps) => {
-        this.employes = emps;
-      },
-      (error) => {
-        const errorMessage =
-          error.error.message ||
-          'Failed to load Employees. Please try again later.';
-        this.showMessage(errorMessage, true);
-      }
-    );
+    setTimeout(() => {
+      this.employeService.listeEmploye().subscribe(
+        (emps) => {
+          this.isLoading = false;
+          this.employes = emps;
+        },
+        (error) => {
+          const errorMessage =
+            error.error.message ||
+            'Failed to load Employees. Please try again later.';
+          this.showMessage(errorMessage, true);
+        }
+      );
+    }, 5000);
   }
 
   supprimerEmploye(e: Employe) {

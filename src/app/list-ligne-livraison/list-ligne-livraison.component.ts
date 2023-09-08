@@ -21,6 +21,7 @@ export class ListLigneLivraisonComponent {
   message: string | null = null;
   errorMessage: string | null = null;
   isError: boolean = false;
+  isLoading = true;
 
   constructor(
     private ligneLivraisonService: LignelivraisonService,
@@ -36,10 +37,18 @@ export class ListLigneLivraisonComponent {
 
   //Initialisation des données avec Datatable
   ngAfterViewInit() {
-    this.ligneLivraisonService.listeLigneLivraison().subscribe((lv) => {
-      this.lignelivraisons = lv;
-      $('#dataTable').DataTable();
-    });
+    setTimeout(() => {
+      this.ligneLivraisonService.listeLigneLivraison().subscribe((lv) => {
+        this.isLoading = false;
+        this.lignelivraisons = lv;
+        setTimeout(() => {
+          $('#dataTable').DataTable({
+            paging: true, // Active la pagination
+            pageLength: 10, // Nombre de lignes par page
+          });
+        }, 0); 
+      });
+    }, 5000);
   }
 
   supprimerLigneLivraison(lv: Lignelivraison) {
@@ -134,17 +143,20 @@ export class ListLigneLivraisonComponent {
   }
 
   chargerLigneLivraison() {
-    this.ligneLivraisonService.listeLigneLivraison().subscribe(
-      (lv) => {
-        this.lignelivraisons = lv;
-      },
-      (error) => {
-        const errorMessage =
-          error.error.message ||
-          'Failed to load Livraison Fournitures. Please try again later.';
-        this.showMessage(errorMessage, true);
-      }
-    );
+    setTimeout(() => {
+      this.ligneLivraisonService.listeLigneLivraison().subscribe(
+        (lv) => {
+          this.isLoading = false;
+          this.lignelivraisons = lv;
+        },
+        (error) => {
+          const errorMessage =
+            error.error.message ||
+            'Failed to load Livraison Fournitures. Please try again later.';
+          this.showMessage(errorMessage, true);
+        }
+      );
+    }, 5000);
   }
 
   showMessage(message: string, isError: boolean = false) {

@@ -39,7 +39,7 @@
                     <tr *ngFor="let sortie of sorties; let i = index;">
                         <td>{{i + 1}}</td>
                         <td>{{sortie.codeSort}}</td>
-                        <td>{{sortie.dateSort}}</td>
+                        <td>{{sortie.dateSort|date:'dd/MM/yyyy'}}</td>
                         <td>{{sortie.employe?.nomEmp}} - {{sortie.employe?.prenomEmp}}</td>
                         <td>{{sortie.fourniture?.nomFour}} {{sortie.fourniture?.mesureFour}}</td>
                         <td>{{sortie.qteSort }}</td>

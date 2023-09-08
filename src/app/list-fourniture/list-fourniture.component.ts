@@ -14,7 +14,8 @@ export class ListFournitureComponent {
   message: string | null = null;
   errorMessage: string | null = null;
   isError: boolean = false;
-
+  isLoading = true;
+  
   constructor(
     private fournitureService: FournitureService,
     private messageService: MessageService,
@@ -28,10 +29,18 @@ export class ListFournitureComponent {
 
   //Initialisation des données avec Datatable
   ngAfterViewInit() {
-    this.fournitureService.listeFourniture().subscribe((fours) => {
-      this.fournitures = fours;
-      $('#dataTable').DataTable();
-    });
+    setTimeout(() => {
+      this.fournitureService.listeFourniture().subscribe((fours) => {
+        this.isLoading = false;
+        this.fournitures = fours;
+        setTimeout(() => {
+          $('#dataTable').DataTable({
+            paging: true, // Active la pagination
+            pageLength: 10, // Nombre de lignes par page
+          });
+        }, 0); 
+      });
+    }, 5000);
   }
 
   supprimerFourniture(f: Fourniture) {
@@ -48,17 +57,20 @@ export class ListFournitureComponent {
   }
 
   chargerFournitures() {
-    this.fournitureService.listeFourniture().subscribe(
-      (fours) => {
-        this.fournitures = fours;
-      },
-      (error) => {
-        const errorMessage =
-          error.error.message ||
-          'Failed to load Fournitures. Please try again later.';
-        this.showMessage(errorMessage, true);
-      }
-    );
+    setTimeout(() => {
+      this.fournitureService.listeFourniture().subscribe(
+        (fours) => {
+          this.isLoading = false;
+          this.fournitures = fours;
+        },
+        (error) => {
+          const errorMessage =
+            error.error.message ||
+            'Failed to load Fournitures. Please try again later.';
+          this.showMessage(errorMessage, true);
+        }
+      );
+    }, 5000);
   }
 
   showMessage(message: string, isError: boolean = false) {

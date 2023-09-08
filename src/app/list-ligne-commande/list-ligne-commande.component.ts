@@ -14,6 +14,7 @@ export class ListLigneCommandeComponent {
   message: string | null = null;
   errorMessage: string | null = null;
   isError: boolean = false;
+  isLoading = true;
 
   constructor(
     private ligneCommandeService: LignecommandeService,
@@ -28,10 +29,18 @@ export class ListLigneCommandeComponent {
 
   //Initialisation des données avec Datatable
   ngAfterViewInit() {
-    this.ligneCommandeService.listeLigneCommande().subscribe((lc) => {
-      this.lignecommandes = lc;
-      $('#dataTable').DataTable();
-    });
+    setTimeout(() => {
+      this.ligneCommandeService.listeLigneCommande().subscribe((lc) => {
+        this.isLoading = false;
+        this.lignecommandes = lc;
+        setTimeout(() => {
+          $('#dataTable').DataTable({
+            paging: true, // Active la pagination
+            pageLength: 10, // Nombre de lignes par page
+          });
+        }, 0); 
+      });
+    }, 5000);
   }
 
   supprimerLigneCommande(lc: Lignecommande) {
@@ -54,17 +63,20 @@ export class ListLigneCommandeComponent {
   }
 
   chargerLigneCommandes() {
-    this.ligneCommandeService.listeLigneCommande().subscribe(
-      (lc) => {
-        this.lignecommandes = lc;
-      },
-      (error) => {
-        const errorMessage =
-          error.error.message ||
-          'Failed to load Commmande Fournitures. Please try again later.';
-        this.showMessage(errorMessage, true);
-      }
-    );
+    setTimeout(() => {
+      this.ligneCommandeService.listeLigneCommande().subscribe(
+        (lc) => {
+          this.isLoading = false;
+          this.lignecommandes = lc;
+        },
+        (error) => {
+          const errorMessage =
+            error.error.message ||
+            'Failed to load Commmande Fournitures. Please try again later.';
+          this.showMessage(errorMessage, true);
+        }
+      );
+    }, 5000);
   }
 
   showMessage(message: string, isError: boolean = false) {

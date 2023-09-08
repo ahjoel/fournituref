@@ -40,7 +40,7 @@
                         <td>{{i + 1}}</td>
                         <td>{{lignecommande.commande?.codeCom}}</td>
                         <td>{{lignecommande.commande?.employe.nomEmp}} - {{lignecommande.commande?.employe.prenomEmp}}</td>
-                        <td>{{lignecommande.commande?.dateCom}}</td>
+                        <td>{{lignecommande.commande?.dateCom| date:'dd/MM/yyyy'}}</td>
                         <td>{{lignecommande.fourniture?.nomFour}} - {{lignecommande.fourniture?.mesureFour}}</td>
                         <td>{{lignecommande.qteLigneCom}}</td>
                         <td>{{lignecommande.etatLigneCom}}</td>

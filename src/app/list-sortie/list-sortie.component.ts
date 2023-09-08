@@ -15,7 +15,8 @@ export class ListSortieComponent {
   message: string | null = null;
   errorMessage: string | null = null;
   isError: boolean = false;
-
+  isLoading = true;
+  
   constructor(
     private sortieService: SortieService,
     private mouvementService: MouvementService,
@@ -29,10 +30,19 @@ export class ListSortieComponent {
 
   //Initialisation des données avec Datatable
   ngAfterViewInit() {
-    this.sortieService.listeSortie().subscribe((sors) => {
-      this.sorties = sors;
-      $('#dataTable').DataTable();
-    });
+    setTimeout(() => {
+      this.sortieService.listeSortie().subscribe((sors) => {
+        this.isLoading = false;
+        this.sorties = sors;
+
+        setTimeout(() => {
+          $('#dataTable').DataTable({
+            paging: true, // Active la pagination
+            pageLength: 10, // Nombre de lignes par page
+          });
+        }, 0); 
+      });
+    }, 5000);
   }
 
   supprimerSortie(s: Sortie) {
@@ -104,17 +114,20 @@ export class ListSortieComponent {
   }
 
   chargerSorties() {
-    this.sortieService.listeSortie().subscribe(
-      (sorts) => {
-        this.sorties = sorts;
-      },
-      (error) => {
-        const errorMessage =
-          error.error.message ||
-          'Failed to load Sortie Fourniture. Please try again later.';
-        this.showMessage(errorMessage, true);
-      }
-    );
+    setTimeout(() => {
+      this.sortieService.listeSortie().subscribe(
+        (sorts) => {
+          this.isLoading = false;
+          this.sorties = sorts;
+        },
+        (error) => {
+          const errorMessage =
+            error.error.message ||
+            'Failed to load Sortie Fourniture. Please try again later.';
+          this.showMessage(errorMessage, true);
+        }
+      );
+    }, 5000);
   }
 
   showMessage(message: string, isError: boolean = false) {

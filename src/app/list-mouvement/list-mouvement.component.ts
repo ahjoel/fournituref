@@ -18,6 +18,7 @@ export class ListMouvementComponent {
   qteLivre!: number;
   qteFourLivraison!: number;
   qteFourSortie!: number;
+  isLoading = true;
 
   constructor(
     private mouvementService: MouvementService,
@@ -77,10 +78,18 @@ export class ListMouvementComponent {
 
   //Initialisation des données avec Datatable
   ngAfterViewInit() {
-    this.mouvementService.listeMouvement().subscribe((fours) => {
-      this.mouvements = fours;
-      $('#dataTable').DataTable();
-    });
+    setTimeout(() => {
+      this.mouvementService.listeMouvement().subscribe((fours) => {
+        this.isLoading = false;
+        this.mouvements = fours;
+        setTimeout(() => {
+          $('#dataTable').DataTable({
+            paging: true, // Active la pagination
+            pageLength: 10, // Nombre de lignes par page
+          });
+        }, 0); 
+      });
+    }, 5000);
   }
 
   currentDate = new Date();
@@ -106,17 +115,20 @@ export class ListMouvementComponent {
   }
 
   chargerMouvement() {
-    this.mouvementService.listeMouvement().subscribe(
-      (fours) => {
-        this.mouvements = fours;
-      },
-      (error) => {
-        const errorMessage =
-          error.error.message ||
-          'Failed to load Mouvement Fournitures. Please try again later.';
-        this.showMessage(errorMessage, true);
-      }
-    );
+    setTimeout(() => {
+      this.mouvementService.listeMouvement().subscribe(
+        (fours) => {
+          this.isLoading = false;
+          this.mouvements = fours;
+        },
+        (error) => {
+          const errorMessage =
+            error.error.message ||
+            'Failed to load Mouvement Fournitures. Please try again later.';
+          this.showMessage(errorMessage, true);
+        }
+      );
+    }, 5000);
   }
 
   showMessage(message: string, isError: boolean = false) {

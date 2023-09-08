@@ -8,6 +8,13 @@
     </div>
 </ng-container>
 
+<div *ngIf="isLoading" class="spinner-container">
+    <app-spinner></app-spinner>
+</div>
+
+
+
+<div *ngIf="!isLoading">
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Employé</h1>
@@ -55,4 +62,6 @@
             </table>
         </div>
     </div>
+</div>
+
 </div>

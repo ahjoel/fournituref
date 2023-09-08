@@ -7,8 +7,8 @@ import { User } from '../model/user.model';
 })
 export class AuthService {
   users: User[] = [
-    { username: 'ADMIN', password: 'joel', roles: ['ADMIN'] },
-    { username: 'INVITE', password: '123', roles: ['USER'] },
+    { username: 'ADMIN', password: 'stock23', roles: ['ADMIN'] },
+    { username: 'INVITE', password: 'invite', roles: ['USER'] },
   ];
   public loggedUser!: string;
   public isloggedIn: Boolean = false;

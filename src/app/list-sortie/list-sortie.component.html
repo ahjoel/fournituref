@@ -8,6 +8,13 @@
     </div>
 </ng-container>
 
+<div *ngIf="isLoading" class="spinner-container">
+    <app-spinner></app-spinner>
+</div>
+
+
+
+<div *ngIf="!isLoading">
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Sortie Fourniture</h1>
@@ -23,47 +30,50 @@
     </div>
     <div class="card-body">
         <div class="table-responsive table-wrapper">
-            <table id="dataTable" class="table table-bordered" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Ref Sortie</th>
-                        <th>Date Sortie</th>
-                        <th>Employe</th>
-                        <th>Fourniture</th>
-                        <th>Qte Retirée</th>
-                        <th>Statut</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let sortie of sorties; let i = index;">
-                        <td>{{i + 1}}</td>
-                        <td>{{sortie.codeSort}}</td>
-                        <td>{{sortie.dateSort}}</td>
-                        <td>{{sortie.employe?.nomEmp}} - {{sortie.employe?.prenomEmp}}</td>
-                        <td>{{sortie.fourniture?.nomFour}} {{sortie.fourniture?.mesureFour}}</td>
-                        <td>{{sortie.qteSort }}</td>
-                        <td>{{sortie.etatSort}}</td>
-                        <td>
-                            <a [routerLink]="['/sortie/edit_sortie', sortie.id]"
-                                class="btn btn-info btn-circle btn-sm">
-                                <i class="fas fa-pen" data-toggle="tooltip" data-placement="top" title="Modifier une sortie"></i>
-                            </a>
-                            <a (click)="supprimerSortie(sortie)"
-                                class="btn btn-danger btn-circle btn-sm" style="margin-left: 5px;">
-                                <i class="fas fa-ban" data-toggle="tooltip" data-placement="top" title="Désactiver une sortie"></i>
-                            </a>
-                            <span *ngIf="authService.isAdmin()">
-                                <a (click)="validerSortie(sortie)" *ngIf="sortie.etatSort === 'NON-VA'"
-                                    class="btn btn-success btn-circle btn-sm" style="margin-left: 5px;">
-                                    <i class="fas fa-check" data-toggle="tooltip" data-placement="top" title="Valider une livraison"></i>
+                <table id="dataTable" class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ref Sortie</th>
+                            <th>Date Sortie</th>
+                            <th>Employe</th>
+                            <th>Fourniture</th>
+                            <th>Qte Retirée</th>
+                            <th>Statut</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let sortie of sorties; let i = index;">
+                            <td>{{i + 1}}</td>
+                            <td>{{sortie.codeSort}}</td>
+                            <td>{{sortie.dateSort|date:'dd/MM/yyyy'}}</td>
+                            <td>{{sortie.employe?.nomEmp}} - {{sortie.employe?.prenomEmp}}</td>
+                            <td>{{sortie.fourniture?.nomFour}} {{sortie.fourniture?.mesureFour}}</td>
+                            <td>{{sortie.qteSort }}</td>
+                            <td>{{sortie.etatSort}}</td>
+                            <td>
+                                <a [routerLink]="['/sortie/edit_sortie', sortie.id]"
+                                    class="btn btn-info btn-circle btn-sm">
+                                    <i class="fas fa-pen" data-toggle="tooltip" data-placement="top" title="Modifier une sortie"></i>
                                 </a>
-                            </span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                                <a (click)="supprimerSortie(sortie)"
+                                    class="btn btn-danger btn-circle btn-sm" style="margin-left: 5px;">
+                                    <i class="fas fa-ban" data-toggle="tooltip" data-placement="top" title="Désactiver une sortie"></i>
+                                </a>
+                                <span *ngIf="authService.isAdmin()">
+                                    <a (click)="validerSortie(sortie)" *ngIf="sortie.etatSort === 'NON-VA'"
+                                        class="btn btn-success btn-circle btn-sm" style="margin-left: 5px;">
+                                        <i class="fas fa-check" data-toggle="tooltip" data-placement="top" title="Valider une livraison"></i>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+           
         </div>
     </div>
+</div>
+
 </div>
