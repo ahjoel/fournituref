@@ -89,7 +89,7 @@ export class ListMouvementComponent {
           });
         }, 0); 
       });
-    }, 5000);
+    }, 500);
   }
 
   currentDate = new Date();
@@ -128,7 +128,7 @@ export class ListMouvementComponent {
           this.showMessage(errorMessage, true);
         }
       );
-    }, 5000);
+    }, 500);
   }
 
   showMessage(message: string, isError: boolean = false) {

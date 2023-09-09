@@ -40,7 +40,7 @@ export class ListLigneCommandeComponent {
           });
         }, 0); 
       });
-    }, 5000);
+    }, 500);
   }
 
   supprimerLigneCommande(lc: Lignecommande) {
@@ -76,7 +76,7 @@ export class ListLigneCommandeComponent {
           this.showMessage(errorMessage, true);
         }
       );
-    }, 5000);
+    }, 500);
   }
 
   showMessage(message: string, isError: boolean = false) {

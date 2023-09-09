@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiBaseUrl: 'https://stockfournituresbureaux.onrender.com',
+    apiBaseUrl: 'https://fournitures-production.up.railway.app',
     apiKey: 'your-dev-api-key',
   };
