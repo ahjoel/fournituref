@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 
@@ -11,7 +11,7 @@ export class HeaderComponent {
 
   isAuthenticated = false;
 
-  constructor(public authService: AuthService, private route: ActivatedRoute, private router: Router) {}
+  constructor(public authService: AuthService, private renderer: Renderer2, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     // Check if the user is authenticated and set the value of the isAuthenticated property accordingly.
@@ -41,5 +41,22 @@ export class HeaderComponent {
 
   onLogout() {
     this.authService.logout();
+  }
+
+  
+  toggleSidebar() {
+    const bodyElement = document.getElementById('page-top');
+    const bodyElementUl = document.getElementById('accordionSidebar');
+    if (bodyElement) {
+      if (bodyElement.classList.contains('sidebar-toggled')) {
+        // La classe est déjà présente, donc nous la retirons
+        this.renderer.removeClass(bodyElement, 'sidebar-toggled');
+        this.renderer.removeClass(bodyElementUl, 'toggled');
+      } else {
+        // La classe n'est pas présente, donc nous l'ajoutons
+        this.renderer.addClass(bodyElement, 'sidebar-toggled');
+        this.renderer.addClass(bodyElementUl, 'toggled');
+      }
+    }
   }
 }
