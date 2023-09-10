@@ -32,6 +32,7 @@ import { EtatSortieComponent } from './etat-sortie/etat-sortie.component';
 import { LoginComponent } from './login/login.component';
 import { EtatMensuelStockComponent } from './etat-mensuel-stock/etat-mensuel-stock.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
