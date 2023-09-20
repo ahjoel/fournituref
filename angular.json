@@ -31,6 +31,8 @@
               "src/assets/css/all.min.css"
             ],
             "scripts": [
+              "src/assets/vendor/jquery/jquery-3-6-0.min.js",
+              "src/assets/vendor/jquery/jquery-3-5-1.js",
               "src/assets/vendor/bootstrap/js/bootstrap.bundle.min.js",
               "src/assets/js/sb-admin-2.min.js",
               "src/assets/vendor/datatables/jquery.dataTables.min.js",

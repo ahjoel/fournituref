@@ -48,7 +48,7 @@ export class ListLigneLivraisonComponent {
           });
         }, 0); 
       });
-    }, 5000);
+    }, 500);
   }
 
   supprimerLigneLivraison(lv: Lignelivraison) {
@@ -156,7 +156,7 @@ export class ListLigneLivraisonComponent {
           this.showMessage(errorMessage, true);
         }
       );
-    }, 5000);
+    }, 500);
   }
 
   showMessage(message: string, isError: boolean = false) {

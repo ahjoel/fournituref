@@ -40,7 +40,7 @@ export class ListFournitureComponent {
           });
         }, 0); 
       });
-    }, 5000);
+    }, 500);
   }
 
   supprimerFourniture(f: Fourniture) {
@@ -70,7 +70,7 @@ export class ListFournitureComponent {
           this.showMessage(errorMessage, true);
         }
       );
-    }, 5000);
+    }, 500);
   }
 
   showMessage(message: string, isError: boolean = false) {

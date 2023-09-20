@@ -33,7 +33,7 @@ export class ListEmployeComponent {
           });
         }, 0); 
       });
-    }, 5000);
+    }, 500);
   }
 
   chargerEmployes() {
@@ -50,7 +50,7 @@ export class ListEmployeComponent {
           this.showMessage(errorMessage, true);
         }
       );
-    }, 5000);
+    }, 500);
   }
 
   supprimerEmploye(e: Employe) {

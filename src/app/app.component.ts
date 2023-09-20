@@ -36,7 +36,7 @@ export class AppComponent implements OnInit{
         }
       });
 
-  
+
       //   let o;
       //   if (768 < $(window).width()) {
       //     o = e.originalEvent;
@@ -67,6 +67,7 @@ export class AppComponent implements OnInit{
       // });
     })();
 
+    
     let isloggedin: string;
     let loggedUser: string;
 
@@ -83,5 +84,5 @@ export class AppComponent implements OnInit{
   onLogout() {
     this.authService.logout();
   }
-  
+
 }

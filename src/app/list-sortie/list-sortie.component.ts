@@ -42,7 +42,7 @@ export class ListSortieComponent {
           });
         }, 0); 
       });
-    }, 5000);
+    }, 500);
   }
 
   supprimerSortie(s: Sortie) {
@@ -127,7 +127,7 @@ export class ListSortieComponent {
           this.showMessage(errorMessage, true);
         }
       );
-    }, 5000);
+    }, 500);
   }
 
   showMessage(message: string, isError: boolean = false) {

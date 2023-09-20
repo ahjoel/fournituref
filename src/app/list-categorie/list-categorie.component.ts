@@ -35,7 +35,7 @@ export class ListCategorieComponent {
           });
         }, 0); 
       });
-    }, 5000);
+    }, 500);
   }
 
   chargerCategories() {
@@ -50,7 +50,7 @@ export class ListCategorieComponent {
           this.showMessage(errorMessage, true);
         }
       );
-    }, 5000);
+    }, 500);
   }
 
   supprimerCategorie(c: Categorie) {
