@@ -13,7 +13,9 @@ export class LoginComponent {
   erreur = 0;
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    alert('Compte par défaut, Pseudo : ADMIN, Mot de passe : stock23')
+  }
 
   onLoggedIn() {
     console.log(this.user);
